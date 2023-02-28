@@ -1,6 +1,8 @@
 import React from 'react'
 import Navigation from './Navigation'
 
+import bg from '../assets/bg.jpg'
+
 export default function HomePage() {
   return (
     <div>
@@ -49,6 +51,8 @@ export default function HomePage() {
                 </div>
                 
             </div>
+
+            
 
             </div>
         </div>
