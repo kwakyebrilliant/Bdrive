@@ -379,7 +379,7 @@ export default function HomePage() {
 
     <div className="relative hover:shadow-lg block bg-white p-8 overflow-hidden border border-gray-100 rounded-lg">
             <span
-                className="absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
+                className="absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-blue-300 via-blue-500 to-purple-600"
             ></span>
 
             <div className="justify-between sm:flex">
@@ -391,7 +391,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex-shrink-0 hidden ml-3 sm:block">
-                <PhoneIcon className='w-16 h-16 p-4 object-cover bg-green-600 shadow-2xl text-white rounded-lg' />
+                <PhoneIcon className='w-16 h-16 p-4 object-cover bg-blue-700 shadow-2xl text-white rounded-lg' />
                 </div>
             </div>
 
@@ -405,7 +405,7 @@ export default function HomePage() {
             <dl className="flex mt-6">
                 <div className="flex flex-col-reverse">
                 <Link to="#faqs">
-                <dt className="text-sm font-medium flex text-green-600">Continue <ArrowSmRightIcon className='w-5 ml-2' /></dt>
+                <dt className="text-sm font-medium flex text-blue-700">Continue <ArrowSmRightIcon className='w-5 ml-2' /></dt>
                     </Link>
                 <dd className="text-xs text-gray-500">Continue onFAQ's</dd>
                 </div>
@@ -415,7 +415,7 @@ export default function HomePage() {
 
             <div className="relative hover:shadow-lg block bg-white p-8 overflow-hidden border border-gray-100 rounded-lg">
             <span
-                className="absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
+                className="absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-blue-300 via-blue-500 to-purple-600"
             ></span>
 
             <div className="justify-between sm:flex">
@@ -427,7 +427,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex-shrink-0 hidden ml-3 sm:block">
-                <SupportIcon className='w-16 h-16 p-4 object-cover bg-green-600 shadow-2xl text-white rounded-lg' />
+                <SupportIcon className='w-16 h-16 p-4 object-cover bg-blue-600 shadow-2xl text-white rounded-lg' />
                 </div>
             </div>
 
@@ -441,7 +441,7 @@ export default function HomePage() {
             <dl className="flex mt-6">
                 <div className="flex flex-col-reverse">
                 <Link to="#faqs">
-                <dt className="text-sm font-medium flex text-green-600">Continue <ArrowSmRightIcon className='w-5 ml-2' /></dt>
+                <dt className="text-sm font-medium flex text-blue-700">Continue <ArrowSmRightIcon className='w-5 ml-2' /></dt>
                     </Link>
                 <dd className="text-xs text-gray-500">Continue onFAQ's</dd>
                 </div>
@@ -451,7 +451,7 @@ export default function HomePage() {
 
             <div className="relative hover:shadow-lg block bg-white p-8 overflow-hidden border border-gray-100 rounded-lg">
             <span
-                className="absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
+                className="absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-blue-300 via-blue-500 to-purple-600"
             ></span>
 
             <div className="justify-between sm:flex">
@@ -463,7 +463,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex-shrink-0 hidden ml-3 sm:block">
-                <ChipIcon className='w-16 h-16 p-4 object-cover bg-green-600 shadow-2xl text-white rounded-lg' />
+                <ChipIcon className='w-16 h-16 p-4 object-cover bg-blue-700 shadow-2xl text-white rounded-lg' />
                 </div>
             </div>
 
@@ -477,7 +477,7 @@ export default function HomePage() {
             <dl className="flex mt-6">
                 <div className="flex flex-col-reverse">
                 <Link to="#faqs">
-                <dt className="text-sm font-medium flex text-green-600">Continue <ArrowSmRightIcon className='w-5 ml-2' /></dt>
+                <dt className="text-sm font-medium flex text-blue-700">Continue <ArrowSmRightIcon className='w-5 ml-2' /></dt>
                     </Link>
                 <dd className="text-xs text-gray-500">Continue onFAQ's</dd>
                 </div>
