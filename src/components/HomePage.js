@@ -2,6 +2,7 @@ import React from 'react'
 import Navigation from './Navigation'
 
 import bg from '../assets/bg.jpg'
+import img1 from '../assets/img1.jpg'
 
 export default function HomePage() {
   return (
@@ -38,7 +39,7 @@ export default function HomePage() {
                 </span>
                 </a>
 
-                <a className="group relative inline-block overflow-hidden border border-blue-700 px-8 py-3 focus:outline-none focus:ring" href="/">
+                <a data-role="smoothscroll" className="group relative inline-block overflow-hidden border border-blue-700 px-8 py-3 focus:outline-none focus:ring" href="#about">
                 <span className="absolute inset-x-0 top-0 h-[2px] bg-blue-700 transition-all group-hover:h-full group-active:bg-blue-700"></span>
 
                 <span className="relative text-sm font-medium text-blue-700 transition-colors group-hover:text-white">
@@ -68,12 +69,12 @@ export default function HomePage() {
 
 
     <section>
-  <div className="max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8">
+  <div id="about" className="max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8">
     <div
       className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16"
     >
       <div className="mx-auto max-w-lg text-center lg:mx-0 lg:text-left">
-        <img className='w-full justify-center' src={bg} alt="/" />
+        <img className='w-full justify-center' src={img1} alt="/" />
       </div>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
