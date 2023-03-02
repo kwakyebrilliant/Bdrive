@@ -151,7 +151,7 @@ export default function HomePage() {
             </svg>
           </span>
 
-          <h2 className="mt-2 font-bold">Accountant</h2>
+          <h2 className="mt-2 font-bold">Word</h2>
 
           <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
             Lorem ipsum dolor sit amet consectetur.
