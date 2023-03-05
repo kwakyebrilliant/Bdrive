@@ -189,7 +189,7 @@ export default function HomePage() {
           <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
             Lorem ipsum dolor sit amet consectetur.
           </p>
-        </a>
+        </a> 
 
         <a className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-red-300 hover:ring-1 hover:ring-red-300 focus:outline-none focus:ring" href="#nothing">
           <span className="inline-block rounded-lg bg-gray-50 p-3">
