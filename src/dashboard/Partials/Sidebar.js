@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { AiFillPieChart } from 'react-icons/ai'
-import { FaCloudversify } from 'react-icons/fa'
+import { FaUsb } from 'react-icons/fa'
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
@@ -28,10 +28,10 @@ const Sidebar = () => {
                 />
                 <Link to='/summary'>
                     <div className={`flex ${open && 'gap-x-4'} items-center`}>
-                    <FaCloudversify className=' text-green-600 lg:w-[35px] lg:h-[35px]' />
+                    <FaUsb className=' text-blue-500 lg:w-[35px] lg:h-[35px]' />
                         {open && (
                             <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
-                                SUSTAIN.
+                                BDRIVE.
                             </span>
                         )}
                     </div>
