@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-import {  AiOutlineLogout, AiOutlineArrowDown, AiOutlineArrowUp, AiFillPieChart } from 'react-icons/ai'
+import {  AiOutlineLogout, AiOutlineArrowDown, AiOutlineArrowUp, AiFillPieChart, AiFillUsb } from 'react-icons/ai'
+import {  FaPeopleArrows, FaHeart, FaClock } from 'react-icons/fa'
 
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
@@ -31,6 +32,10 @@ const PartialNavbar = () => {
 
             <ul className={!nav ? 'hidden' : 'absolute bg-zinc-900 w-fit px-8 h-screen'}>
                 <li className='border-zinc-900 w-fit text-white'><Link to="/summary" className='flex' onClick={handleClose}><AiFillPieChart className='text-2xl mr-4' />Summary</Link></li>
+                <li className='border-zinc-900 w-fit text-white'><Link to="/mydrive" className='flex' onClick={handleClose}><AiFillUsb className='text-2xl mr-4' />My Drive</Link></li>
+                <li className='border-zinc-900 w-fit text-white'><Link to="/shared" className='flex' onClick={handleClose}><FaPeopleArrows className='text-2xl mr-4' />Shared</Link></li>
+                <li className='border-zinc-900 w-fit text-white'><Link to="/recent" className='flex' onClick={handleClose}><FaClock className='text-2xl mr-4' />Recent</Link></li>
+                <li className='border-zinc-900 w-fit text-white'><Link to="/favorite" className='flex' onClick={handleClose}><FaHeart className='text-2xl mr-4' />Favorite</Link></li>
             </ul>
           
             </div>
