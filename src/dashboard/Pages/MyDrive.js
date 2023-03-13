@@ -43,7 +43,7 @@ function MyDrive() {
 
                   <div className='relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
                  
-                  <a href="/nothing" className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
+                  <a href="#nothing" className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
                   >
                     <div className="absolute inset-0 bg-black/25"></div>
 
@@ -73,7 +73,7 @@ function MyDrive() {
                     </div>
                   </a>
 
-                  <a href="/nothing" className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
+                  <a href="#nothing" className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
                   >
                     <div className="absolute inset-0 bg-black/25"></div>
 
@@ -103,7 +103,7 @@ function MyDrive() {
                     </div>
                   </a>
 
-                  <a href="/nothing" className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
+                  <a href="#nothing" className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
                   >
                     <div className="absolute inset-0 bg-black/25"></div>
 
@@ -133,7 +133,7 @@ function MyDrive() {
                     </div>
                   </a>
 
-                  <a href="/nothing" className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
+                  <a href="#nothing" className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
                   >
                     <div className="absolute inset-0 bg-black/25"></div>
 
@@ -169,10 +169,33 @@ function MyDrive() {
 
 
                 {/* Files */}
-                <div className='mt-5'>
+                <div className='mt-10'>
                 <p className='text-md'>
                   Files
                 </p>
+                </div>
+
+                <div className='w-full'>
+                <div className='relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
+
+                <a href="#nothing" class="block">
+                  <img
+                    alt="Signage"
+                    src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                  />
+
+                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong class="font-medium">Company Name</strong>
+
+                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+
+                    <p class="mt-0.5 opacity-50 sm:mt-0">Branding / Signage</p>
+                  </div>
+                </a>
+
+
+                </div>
                 </div>
 
 
