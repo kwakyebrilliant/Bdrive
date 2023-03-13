@@ -30,7 +30,7 @@ const PartialNavbar = () => {
             <div className='md:hidden' onClick={handleClick}>
             {!nav ? <MenuIcon className='w-5 text-black' /> : <XIcon className='w-5 text-black' />}
 
-            <ul className={!nav ? 'hidden' : 'absolute bg-zinc-900 w-fit px-8 h-screen'}>
+            <ul className={!nav ? 'hidden' : 'absolute bg-zinc-900 w-fit px-8 h-max-full '}>
                 <li className='border-zinc-900 w-fit text-white'><Link to="/summary" className='flex' onClick={handleClose}><AiFillPieChart className='text-2xl mr-4' />Summary</Link></li>
                 <li className='border-zinc-900 w-fit text-white'><Link to="/mydrive" className='flex' onClick={handleClose}><AiFillUsb className='text-2xl mr-4' />My Drive</Link></li>
                 <li className='border-zinc-900 w-fit text-white'><Link to="/shared" className='flex' onClick={handleClose}><FaPeopleArrows className='text-2xl mr-4' />Shared</Link></li>
