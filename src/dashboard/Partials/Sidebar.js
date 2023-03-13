@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
-import { AiFillPieChart } from 'react-icons/ai'
-import { FaUsb } from 'react-icons/fa'
+import { AiFillPieChart, AiFillUsb } from 'react-icons/ai'
+import { FaUsb, FaPeopleArrows, FaHeart, FaClock } from 'react-icons/fa'
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false)
     const location = useLocation()
 
     const Menus = [
-        { title: 'Summary', path: '/summary', src: <AiFillPieChart /> }
+        { title: 'Summary', path: '/summary', src: <AiFillPieChart /> },
+        { title: 'My Drive', path: '/mydrive', src: <AiFillUsb /> },
+        { title: 'Shared', path: '/shared', src: <FaPeopleArrows /> },
+        { title: 'Recent', path: '/Recent', src: <FaClock /> },
+        { title: 'Favorite', path: '/favorite', src: <FaHeart /> },
     ]
 
     return (
@@ -41,7 +45,7 @@ const Sidebar = () => {
                     {Menus.map((menu, index) => (
                         <Link to={menu.path} key={index}>
                             <li
-                                className={`flex items-center gap-x-6 p-3 text-base font-normal rounded-lg cursor-pointer dark:text-white hover:bg-gray-200 dark:hover:bg-green-700
+                                className={`flex items-center gap-x-6 p-3 text-base font-normal rounded-lg cursor-pointer dark:text-white hover:bg-gray-200 dark:hover:bg-blue-500
                         ${menu.gap ? 'mt-9' : 'mt-2'} ${
                                     location.pathname === menu.path &&
                                     'bg-gray-200 dark:bg-gray-700'
