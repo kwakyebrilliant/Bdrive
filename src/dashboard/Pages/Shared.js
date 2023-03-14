@@ -169,7 +169,7 @@ function Shared() {
                 </div>
 
 
-                {/* Files */}
+                {/* Shared with me */}
                 <div className='mt-10'>
                 <p className='text-md'>
                   Shared with me
