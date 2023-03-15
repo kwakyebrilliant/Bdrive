@@ -68,7 +68,7 @@ function Summary() {
                                     <div>
                                         <label className="sr-only" for="address">Name</label>
                                         <input
-                                        className="w-96 rounded-lg border-gray-200 shadow-md p-3 text-sm"
+                                        className="w-96 rounded-lg border border-gray-300 focus:outline-none focus:ring active:bg-gray-300 p-3 text-sm"
                                         placeholder="eg. Doe's CV"
                                         type="text"
                                         id="name"
