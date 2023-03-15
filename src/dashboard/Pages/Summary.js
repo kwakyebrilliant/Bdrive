@@ -40,7 +40,7 @@ function Summary() {
                     <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
 
                     <span className="relative text-sm font-medium text-green-600 transition-colors group-hover:text-white">
-                        Upload Action
+                        Upload File
                     </span>
                     </a>
                 </div>
