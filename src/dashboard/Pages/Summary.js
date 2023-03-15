@@ -47,9 +47,9 @@ function Summary() {
                         ></span>
 
                         <div className="p-4 sm:p-6 lg:p-8">
-                            <p className="text-lg font-bold">Alert Components</p>
+                            <p className="text-lg font-bold">Files Uploaded</p>
 
-                            <p className="mt-1 font-mono text-xs">7 Components</p>
+                            <p className="mt-1 font-mono text-xs">14 files</p>
                         </div>
                     </a>
 
@@ -63,9 +63,9 @@ function Summary() {
                         ></span>
 
                         <div className="p-4 sm:p-6 lg:p-8">
-                            <p className="text-lg font-bold">Alert Components</p>
+                            <p className="text-lg font-bold">Shared With Me</p>
 
-                            <p className="mt-1 font-mono text-xs">7 Components</p>
+                            <p className="mt-1 font-mono text-xs">7 files</p>
                         </div>
                     </a>
 
@@ -79,9 +79,9 @@ function Summary() {
                         ></span>
 
                         <div className="p-4 sm:p-6 lg:p-8">
-                            <p className="text-lg font-bold">Alert Components</p>
+                            <p className="text-lg font-bold">Favorite Uploads</p>
 
-                            <p className="mt-1 font-mono text-xs">7 Components</p>
+                            <p className="mt-1 font-mono text-xs">3 Files</p>
                         </div>
                     </a>
 
