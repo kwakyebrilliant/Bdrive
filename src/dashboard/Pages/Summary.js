@@ -119,7 +119,7 @@ function Summary() {
                 <div className='w-full'>
 
                 <div className='p-8'>
-                <a data-role="smoothscroll" className="group relative inline-block overflow-hidden border border-green-600 px-8 py-3 focus:outline-none focus:ring" href="#nothing">
+                <a onClick={() => setShowModal(true)} data-role="smoothscroll" className="group relative inline-block overflow-hidden border border-green-600 px-8 py-3 focus:outline-none focus:ring" href="#nothing">
                     <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
 
                     <span className="relative text-sm font-medium text-green-600 transition-colors group-hover:text-white">
