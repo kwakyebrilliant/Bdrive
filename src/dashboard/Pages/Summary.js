@@ -69,7 +69,7 @@ function Summary() {
                                         <label className="sr-only" for="address">Name</label>
                                         <input
                                         className="w-96 rounded-lg border-gray-200 shadow-md p-3 text-sm"
-                                        placeholder="eg. Polygon Address"
+                                        placeholder="eg. Doe's CV"
                                         type="text"
                                         id="name"
                                         />
