@@ -71,7 +71,7 @@ function Summary() {
                                         className="w-96 rounded-lg border-gray-200 shadow-md p-3 text-sm"
                                         placeholder="eg. Polygon Address"
                                         type="text"
-                                        id="address"
+                                        id="name"
                                         />
                                     </div>
 
