@@ -63,7 +63,7 @@ function Summary() {
 
                                     <p className='text-md font-medium'>
                                         File Name
-                                    </p>
+                                    </p> 
 
                                     <div>
                                         <label className="sr-only" for="address">Name</label>
