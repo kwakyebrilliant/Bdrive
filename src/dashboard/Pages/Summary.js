@@ -10,8 +10,86 @@ function Summary() {
             <Sidebar />
             <div className='grow'>
                 <PartialNavbar />
+
+                <div className='m-5'>
+            
+                    <header className="rounded-2xl inset-x-0 bottom-0 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
+                    <div className="max-w-screen-xl px-4 py-8 mx-auto sm:py-12 sm:px-6 lg:px-8">
+                        <div className="sm:justify-between sm:items-center sm:flex">
+                        <div className="text-center sm:text-left">
+                            <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+                            Welcome Back, Brilliant!
+                            </h1>
+
+                            <p className="mt-1.5 text-sm text-gray-900">
+                            Check your statistics on BDRIVE. 🎉
+                            </p>
+                        </div>
+
+                        
+                        </div>
+                    </div>
+                    </header>
                 
-                Summary
+                </div>
+
+                <div className='w-full'>
+
+                    <div className='relative mx-10 mt-20 grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-16'>
+
+                    <a className="group relative block rounded-3xl border-4 border-black bg-white pt-12 transition hover:bg-blue-200 sm:pt-16 lg:pt-24">
+                        <span
+                            className="absolute inset-0 -z-10 -translate-x-2 -translate-y-2 rounded-3xl bg-white ring-4 ring-black"
+                        ></span>
+
+                        <span
+                            className="absolute inset-0 -z-20 -translate-x-4 -translate-y-4 rounded-3xl bg-white ring-4 ring-black"
+                        ></span>
+
+                        <div className="p-4 sm:p-6 lg:p-8">
+                            <p className="text-lg font-bold">Alert Components</p>
+
+                            <p className="mt-1 font-mono text-xs">7 Components</p>
+                        </div>
+                    </a>
+
+                    <a className="group relative block rounded-3xl border-4 border-black bg-white pt-12 transition hover:bg-blue-200 sm:pt-16 lg:pt-24">
+                        <span
+                            className="absolute inset-0 -z-10 -translate-x-2 -translate-y-2 rounded-3xl bg-white ring-4 ring-black"
+                        ></span>
+
+                        <span
+                            className="absolute inset-0 -z-20 -translate-x-4 -translate-y-4 rounded-3xl bg-white ring-4 ring-black"
+                        ></span>
+
+                        <div className="p-4 sm:p-6 lg:p-8">
+                            <p className="text-lg font-bold">Alert Components</p>
+
+                            <p className="mt-1 font-mono text-xs">7 Components</p>
+                        </div>
+                    </a>
+
+                    <a className="group relative block rounded-3xl border-4 border-black bg-white pt-12 transition hover:bg-blue-200 sm:pt-16 lg:pt-24">
+                        <span
+                            className="absolute inset-0 -z-10 -translate-x-2 -translate-y-2 rounded-3xl bg-white ring-4 ring-black"
+                        ></span>
+
+                        <span
+                            className="absolute inset-0 -z-20 -translate-x-4 -translate-y-4 rounded-3xl bg-white ring-4 ring-black"
+                        ></span>
+
+                        <div className="p-4 sm:p-6 lg:p-8">
+                            <p className="text-lg font-bold">Alert Components</p>
+
+                            <p className="mt-1 font-mono text-xs">7 Components</p>
+                        </div>
+                    </a>
+
+
+                    </div>
+
+                </div>
+
 
             </div>
 
