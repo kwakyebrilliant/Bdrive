@@ -80,7 +80,7 @@ function Summary() {
                                     </p> 
 
                                     <div classNameclassName="flex w-full items-center justify-center bg-grey-lighter">
-                                        <label className="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-600 hover:text-white">
+                                        <label className="w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-600 hover:text-white">
                                             <svg className="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                 <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                             </svg>
@@ -88,17 +88,6 @@ function Summary() {
                                             <input type='file' className="hidden" />
                                         </label>
                                     </div>
-
-                                    {/* <div className="flex items-center justify-center w-full">
-                                        <label for="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-blue-600 dark:bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-blue-600">
-                                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                                <svg aria-hidden="true" className="w-10 h-10 mb-3 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                                <p className="mb-2 text-sm text-gray-500 dark:text-gray-900"><span class="font-semibold">Click to upload</span></p>
-                                                <p className="text-xs text-gray-500 dark:text-gray-900">SVG, PNG, JPG, PDF, etc</p>
-                                            </div>
-                                            <input id="dropzone-file" type="file" className="hidden" />
-                                        </label>
-                                    </div>  */}
 
                                     <a className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" href="/">
                                         <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
