@@ -62,11 +62,11 @@ function Summary() {
                                        
 
                                     <p className='text-md font-medium'>
-                                        Enter Receiver's Address
+                                        File Name
                                     </p>
 
                                     <div>
-                                        <label className="sr-only" for="address">Address</label>
+                                        <label className="sr-only" for="address">Name</label>
                                         <input
                                         className="w-96 rounded-lg border-gray-200 shadow-md p-3 text-sm"
                                         placeholder="eg. Polygon Address"
