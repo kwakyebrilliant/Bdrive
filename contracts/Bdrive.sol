@@ -27,5 +27,16 @@ contract Bdrive {
         }));
     }
 
+    function listFiles() public view returns (string[] memory, uint256[] memory) {
+        uint256 length = files[msg.sender].length;
+        string[] memory names = new string[](length);
+        uint256[] memory timestamps = new uint256[](length);
+        for (uint256 i = 0; i < length; i++) {
+            names[i] = files[msg.sender][i].name;
+            timestamps[i] = files[msg.sender][i].timeUploaded;
+        }
+        return (names, timestamps);
+    }
+
 
 }
