@@ -16,7 +16,14 @@ contract Bdrive {
 
     function uploadFile(string memory _name) public {
         require(bytes(_name).length > 0, "File name should not be empty");
-       
+        files[msg.sender].push(File({
+            name: _name,
+            owner: msg.sender,
+            recipient: address(0),
+            isShared: false,
+            timeUploaded: block.timestamp,
+            timeShared: 0
+        }));
     }
 
 
