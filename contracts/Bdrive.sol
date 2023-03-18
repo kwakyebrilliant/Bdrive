@@ -14,5 +14,10 @@ contract Bdrive {
 
     mapping (address => File[]) private files;
 
-    
+    function uploadFile(string memory _name) public {
+        require(bytes(_name).length > 0, "File name should not be empty");
+       
+    }
+
+
 }
