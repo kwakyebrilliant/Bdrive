@@ -5,6 +5,8 @@ contract Bdrive {
     struct File {
         string name;
         address owner;
+        address recipient;
+        bool isShared;
     }
 
 
