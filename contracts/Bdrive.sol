@@ -14,6 +14,7 @@ contract Bdrive {
 
     mapping (address => File[]) private files;
 
+    // Allows a user to upload a file to the storage platform by entering the file name.
     function uploadFile(string memory _name) public {
         require(bytes(_name).length > 0, "File name should not be empty");
         files[msg.sender].push(File({
