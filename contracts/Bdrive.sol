@@ -27,6 +27,8 @@ contract Bdrive {
         }));
     }
 
+
+    // Returns an array of all files uploaded by the user
     function listFiles() public view returns (string[] memory, uint256[] memory) {
         uint256 length = files[msg.sender].length;
         string[] memory names = new string[](length);
