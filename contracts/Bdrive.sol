@@ -12,4 +12,7 @@ contract Bdrive {
     }
 
 
+    mapping (address => File[]) private files;
+
+    
 }
