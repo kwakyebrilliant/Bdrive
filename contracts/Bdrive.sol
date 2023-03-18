@@ -7,6 +7,8 @@ contract Bdrive {
         address owner;
         address recipient;
         bool isShared;
+        uint256 timeUploaded;
+        uint256 timeShared;
     }
 
 
