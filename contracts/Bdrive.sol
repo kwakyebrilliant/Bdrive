@@ -44,7 +44,9 @@ contract Bdrive {
         require(_index < files[msg.sender].length, "Invalid index");
         require(files[msg.sender][_index].owner == msg.sender, "You do not own this file");
         require(_recipient != msg.sender, "Recipient address should not be your own");
-        
+        files[msg.sender][_index].recipient = _recipient;
+        files[msg.sender][_index].isShared = true;
+        files[msg.sender][_index].timeShared = block.timestamp;
     }
 
 
