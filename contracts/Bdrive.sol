@@ -61,7 +61,17 @@ function listSharedFiles() public view returns (string[] memory, uint256[] memor
                 sharedCount++;
             }
         }
-        
+        string[] memory sharedFiles = new string[](sharedCount);
+        uint256[] memory timestamps = new uint256[](sharedCount);
+        sharedCount = 0;
+        for (uint256 i = 0; i < length; i++) {
+            if (files[msg.sender][i].isShared) {
+                sharedFiles[sharedCount] = files[msg.sender][i].name;
+                timestamps[sharedCount] = files[msg.sender][i].timeShared;
+                sharedCount++;
+            }
+        }
+        return (sharedFiles, timestamps);
     }
 
 }
