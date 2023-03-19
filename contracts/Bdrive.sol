@@ -40,6 +40,8 @@ contract Bdrive {
         return (names, timestamps);
     }
 
+
+    // Allows a user to share one of their files with another user
     function shareFile(uint256 _index, address _recipient) public {
         require(_index < files[msg.sender].length, "Invalid index");
         require(files[msg.sender][_index].owner == msg.sender, "You do not own this file");
