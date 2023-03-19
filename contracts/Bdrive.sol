@@ -52,4 +52,16 @@ contract Bdrive {
     }
 
 
+
+function listSharedFiles() public view returns (string[] memory, uint256[] memory) {
+        uint256 length = files[msg.sender].length;
+        uint256 sharedCount = 0;
+        for (uint256 i = 0; i < length; i++) {
+            if (files[msg.sender][i].isShared) {
+                sharedCount++;
+            }
+        }
+        
+    }
+
 }
