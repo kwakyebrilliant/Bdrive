@@ -52,7 +52,7 @@ contract Bdrive {
     }
 
 
-
+// Returns an array of the names of all files shared with the user
 function listSharedFiles() public view returns (string[] memory, uint256[] memory) {
         uint256 length = files[msg.sender].length;
         uint256 sharedCount = 0;
