@@ -40,7 +40,12 @@ contract Bdrive {
         return (names, timestamps);
     }
 
-    
+    function shareFile(uint256 _index, address _recipient) public {
+        require(_index < files[msg.sender].length, "Invalid index");
+        require(files[msg.sender][_index].owner == msg.sender, "You do not own this file");
+        require(_recipient != msg.sender, "Recipient address should not be your own");
+        
+    }
 
 
 }
