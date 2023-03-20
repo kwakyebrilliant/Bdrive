@@ -359,7 +359,7 @@ export default function HomePage() {
         ipsum eos temporibus ea nihil.
       </p>
 
-      <a href="#" className="inline-block px-12 py-3 mt-8 text-sm font-medium text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:outline-none focus:ring active:bg-blue-700">
+      <a href="/summary" className="inline-block px-12 py-3 mt-8 text-sm font-medium text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:outline-none focus:ring active:bg-blue-700">
         Get Started
       </a>
     </div>
