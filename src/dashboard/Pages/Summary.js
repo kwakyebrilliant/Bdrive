@@ -28,6 +28,7 @@ function makeStorageClient () {
 function Summary() {
 
     const [name, setName] = useState("");
+    const [image, setImage] = useState(``);
 
     const [showModal, setShowModal] = useState(false);
   return (
