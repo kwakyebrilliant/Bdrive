@@ -383,7 +383,7 @@ export default function HomePage() {
 
           <li>
             <a href="#" className="text-gray-500 transition hover:opacity-75">
-              Cookies
+              FAQ's
             </a>
           </li>
         </ul>
