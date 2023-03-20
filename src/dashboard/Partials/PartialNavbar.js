@@ -22,28 +22,36 @@ const PartialNavbar = () => {
 
     const handleClose2 =()=> setdropdown(!dropdown)
 
-    const [provider, setProvider] = useState(null);
-    const [address, setAddress] = useState(null);
-    
-    useEffect(() => {
-        const connectToMetaMask = async () => {
-          if (window.ethereum) {
-            try {
-              await window.ethereum.request({ method: 'eth_requestAccounts' });
-              const ethereumProvider = new ethers.providers.Web3Provider(window.ethereum);
-              setProvider(ethereumProvider);
-              const accounts = await ethereumProvider.listAccounts();
-              setAddress(accounts[0]);
-            } catch (error) {
-              console.error(error);
-            }
-          } else {
-            console.error('Please install MetaMask!');
-          }
-        };
-    
-        connectToMetaMask();
-      }, []);
+    const [haveMetamask, sethaveMetamask] = useState(true);
+    const [accountAddress, setAccountAddress] = useState('');
+
+    const { ethereum } = window;
+
+  useEffect(() => {
+    const { ethereum } = window;
+    const checkMetamaskAvailability = async () => {
+      if (!ethereum) {
+        sethaveMetamask(false);
+      }
+      sethaveMetamask(true);
+    };
+    checkMetamaskAvailability();
+  }, []);
+
+  const connectWallet = async () => {
+    try {
+      if (!ethereum) {
+        sethaveMetamask(false);
+      }
+      const accounts = await ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+      setAccountAddress(accounts[0]);
+      console.log('account address', accounts)
+    } catch (error) {
+
+    }
+  };
 
   return (
     <nav className='bg-white shadow-sm border-gray-200 mx-2 px-2 py-2.5 rounded'>
@@ -84,7 +92,35 @@ const PartialNavbar = () => {
                                 {!dropdown ? <AiOutlineArrowDown className='w-5 cursor-pointer mt-3 text-black' /> : <AiOutlineArrowUp className='w-5 mt-3 cursor-pointer text-black' />}
 
                                 <ul className={!dropdown ? 'hidden' : 'absolute right-12 mt-2 bg-zinc-900 px-8'}>
-                                    <li className='border-zinc-900 w-fit text-white'>0xF...y6b</li>
+                                    <li className='border-zinc-900 w-fit text-white'>
+                                    { accountAddress ? (
+                                        {accountAddress}
+                                    ) : (
+                                        <>
+                                            <a
+                                        className="text-center cursor-pointer items-center px-8 py-2 mx-2 text-white bg-blue-600 border border-blue-600 rounded hover:bg-transparent hover:text-blue-600 active:text-blue-500 focus:outline-none focus:ring"
+                                        type="submit"
+                                        onClick={connectWallet}
+                                        >
+                                        <span className="text-sm font-medium">
+                                        Connect Wallet
+                                        </span>
+                                        </a>
+                                        </>
+                                    )
+
+                                    }
+                                    {/* <p>{accountAddress}</p>
+                                     <a
+                                        className="text-center cursor-pointer items-center px-8 py-2 mx-2 text-white bg-blue-600 border border-blue-600 rounded hover:bg-transparent hover:text-blue-600 active:text-blue-500 focus:outline-none focus:ring"
+                                        type="submit"
+                                        onClick={connectWallet}
+                                        >
+                                        <span className="text-sm font-medium">
+                                        Connect Wallet
+                                        </span>
+                                        </a> */}
+                                    </li>
                                     <li className='border-zinc-900 w-fit text-white'><Link to="/" className='flex' onClick={handleClose2}><AiOutlineLogout className='text-2xl mr-4' />Logout</Link></li>
                                 </ul>
                             
