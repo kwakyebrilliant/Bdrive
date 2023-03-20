@@ -27,6 +27,44 @@ function makeStorageClient () {
 
 function Summary() {
 
+    const hiddenFileInput = useRef(null);
+
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    
+    const handleClick = () => {
+      hiddenFileInput.current.click();
+    };
+  
+    async function handleChange(event) {
+      const fileUploaded = event.target.files[0];
+      setImage(URL.createObjectURL(event.target.files[0]));
+      const client = makeStorageClient()
+      const cid = await client.put([fileUploaded])
+      console.log('stored files with cid:', cid)
+  
+      const res = await client.get(cid)
+      console.log(`Got a response! [${res.status}] ${res.statusText}`)
+      if (!res.ok) {
+        throw new Error(`failed to get ${cid} - [${res.status}] ${res.statusText}`)
+      }
+  
+  
+      const filess = await res.files();
+      setImage(`https://${cid}.ipfs.dweb.link/${fileUploaded.name}`);
+      console.log(image)
+      console.log(fileUploaded)
+      for (const file of filess) {
+        console.log(`${file.cid} -- ${file.path} -- ${file.size}`)
+      }
+      return cid
+  
+    };
+  
+  
+
     const [name, setName] = useState("");
     const [image, setImage] = useState(``);
 
