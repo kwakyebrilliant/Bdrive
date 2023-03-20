@@ -26,6 +26,9 @@ function makeStorageClient () {
 }
 
 function Summary() {
+
+    const [name, setName] = useState("");
+
     const [showModal, setShowModal] = useState(false);
   return (
     <div className='text-black'>
