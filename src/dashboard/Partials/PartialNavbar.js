@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
 import {  AiOutlineLogout, AiOutlineArrowDown, AiOutlineArrowUp, AiFillPieChart, AiFillUsb } from 'react-icons/ai'
 import {  FaPeopleArrows, FaHeart, FaClock } from 'react-icons/fa'
@@ -6,7 +6,7 @@ import {  FaPeopleArrows, FaHeart, FaClock } from 'react-icons/fa'
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
 
-
+import { ethers } from 'ethers';
 
 const PartialNavbar = () => {
 
