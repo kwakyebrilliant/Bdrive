@@ -4,28 +4,6 @@ import Sidebar from '../Partials/Sidebar';
 
 import { FaShare } from 'react-icons/fa'
 
-import { Web3Storage } from 'web3.storage';
-
-import { ethers } from 'ethers';
-import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
-
-const bdriveAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-
-function getAccessToken () {
-  // If you're just testing, you can paste in a token
-  // and uncomment the following line:
-  // return 'paste-your-token-here'
-
-  // In a real app, it's better to read an access token from an
-  // environement variable or other configuration that's kept outside of
-  // your code base. For this to work, you need to set the
-  // WEB3STORAGE_TOKEN environment variable before you run your code.
-  return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDE0ZGU4NTUwMjAxMTdENDIyY0IxOTRBREJiZERlOTJGZjBkYzkxNzciLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzkzMTA5MjU2NDcsIm5hbWUiOiJCRHJpdmUifQ.hQVswoHltLw7O53wrarZP5lVW00dTI-lW6GmE4ozt6Q'
-}
-
-function makeStorageClient () {
-  return new Web3Storage({ token: getAccessToken() })
-}
  
 function MyDrive() {
   const [showModal, setShowModal] = useState(false);
