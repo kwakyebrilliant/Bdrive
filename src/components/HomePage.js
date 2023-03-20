@@ -32,7 +32,7 @@ export default function HomePage() {
                 <p className='max-w-lg sm:leading-relaxed sm:text-xl'>Store, share, and collaborate on files </p>
                 <p className='max-w-lg sm:leading-relaxed sm:text-xl'>with everything running on the blockchain.</p>
                 <div className="flex flex-wrap gap-4 mt-8 text-center">
-                <a className="group relative inline-flex items-center overflow-hidden rounded bg-blue-700 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-700" href="/">
+                <a className="group relative inline-flex items-center overflow-hidden rounded bg-blue-700 px-8 py-3 text-white focus:outline-none focus:ring active:bg-blue-700" href="/summary">
                 <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
                     <svg
                     className="h-5 w-5"
