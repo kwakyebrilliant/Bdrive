@@ -12,7 +12,7 @@ module.exports = {
       accounts: [privateKey],
     },
     matic: {
-      url: 'https://polygon-mainnet.g.alchemy.com/v2/OPAn_R_vIjcnM9MeCVVuvET9glKc1Y_l',
+      url: 'https://polygon-mumbai.g.alchemy.com/v2/FcFvnqs37WEnLIBhh0b8SUVhx2M_rWTM',
       accounts: [privateKey],
     },
   },
