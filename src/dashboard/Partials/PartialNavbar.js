@@ -21,7 +21,29 @@ const PartialNavbar = () => {
     const handleClick2 = () => setdropdown(!dropdown)
 
     const handleClose2 =()=> setdropdown(!dropdown)
+
+    const [provider, setProvider] = useState(null);
+    const [address, setAddress] = useState(null);
     
+    useEffect(() => {
+        const connectToMetaMask = async () => {
+          if (window.ethereum) {
+            try {
+              await window.ethereum.request({ method: 'eth_requestAccounts' });
+              const ethereumProvider = new ethers.providers.Web3Provider(window.ethereum);
+              setProvider(ethereumProvider);
+              const accounts = await ethereumProvider.listAccounts();
+              setAddress(accounts[0]);
+            } catch (error) {
+              console.error(error);
+            }
+          } else {
+            console.error('Please install MetaMask!');
+          }
+        };
+    
+        connectToMetaMask();
+      }, []);
 
   return (
     <nav className='bg-white shadow-sm border-gray-200 mx-2 px-2 py-2.5 rounded'>
