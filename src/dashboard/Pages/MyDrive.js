@@ -3,6 +3,13 @@ import PartialNavbar from "../Partials/PartialNavbar";
 import Sidebar from '../Partials/Sidebar';
 
 import { FaShare } from 'react-icons/fa'
+
+import { Web3Storage } from 'web3.storage';
+
+import { ethers } from 'ethers';
+import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
+
+const bdriveAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
  
 function MyDrive() {
   const [showModal, setShowModal] = useState(false);
