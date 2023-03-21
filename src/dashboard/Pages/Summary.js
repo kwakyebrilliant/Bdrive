@@ -11,14 +11,7 @@ import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 const bdriveAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 function getAccessToken () {
-  // If you're just testing, you can paste in a token
-  // and uncomment the following line:
-  // return 'paste-your-token-here'
 
-  // In a real app, it's better to read an access token from an
-  // environement variable or other configuration that's kept outside of
-  // your code base. For this to work, you need to set the
-  // WEB3STORAGE_TOKEN environment variable before you run your code.
   return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDE0ZGU4NTUwMjAxMTdENDIyY0IxOTRBREJiZERlOTJGZjBkYzkxNzciLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzkzMTA5MjU2NDcsIm5hbWUiOiJCRHJpdmUifQ.hQVswoHltLw7O53wrarZP5lVW00dTI-lW6GmE4ozt6Q'
 }
 
@@ -68,71 +61,10 @@ function Summary() {
     const [haveMetamask, sethaveMetamask] = useState(true);
     const [accountAddress, setAccountAddress] = useState('');
     const [name, setName] = useState("");
-    const [timeUploaded, setTimeUploaded] = useState(new Date());
     const [image, setImage] = useState(``);
 
-    useEffect(() => {
-        var timer = setInterval(()=>setTimeUploaded(new Date()), 1000 )
-        return function cleanup() {
-            clearInterval(timer)
-        }
-    
-    });
-
-
-    useEffect(() => {
-        const { ethereum } = window;
-        const checkMetamaskAvailability = async () => {
-          if (!ethereum) {
-            sethaveMetamask(false);
-          }
-          sethaveMetamask(true);
-          const accounts = await ethereum.request({
-            method: 'eth_requestAccounts',
-          });
-          setAccountAddress(accounts[0]);
-        };
-        checkMetamaskAvailability();
-      }, []);
-
-
     const [showModal, setShowModal] = useState(false);
-
-
-    async function uploadFile() {
-        if (!name) return;
-        if (!accountAddress) return;
-        if (!timeUploaded) return;
-        if (!image) return;
-
-         // If MetaMask exists
-        if (typeof window.ethereum !== "undefined") {
-            // await requestAccount();
-
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-
-            const time = new Date(timeUploaded);
-
-            const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
-            const transaction = await contract.uploadFile( 
-                [
-                    name,
-                    accountAddress,
-                    Math.floor(time.getTime() / 1000),
-                    image
-                ]
-            );
-
-            setName("");
-            setAccountAddress("");
-            setTimeUploaded("");
-            setImage("");
-            await transaction.wait();
-
-        }
-        window.location.reload(false);
-    }
+    
   return (
     <div className='text-black'>
         <>
@@ -202,38 +134,9 @@ function Summary() {
                                         type="text"
                                         id="name"
                                         required
-                                        onChange={(e) => setName(e.target.value)}
-                                        value={name} 
                                         />
                                     </div>
 
-                                   
-
-                                    <div className='hidden'>
-                                        <label className="sr-only" for="address">Name</label>
-                                        <input
-                                        className="w-96 rounded-lg border border-gray-300 focus:outline-none focus:ring active:bg-gray-300 p-3 text-sm"
-                                        placeholder="eg. Doe's CV"
-                                        type="text"
-                                        id="name"
-                                        required
-                                        onChange={(e) => setAccountAddress(e.target.value)}
-                                        value={accountAddress} 
-                                        />
-                                    </div>
-
-                                    <div className='hidden'>
-                                        <label className="sr-only" for="address">Name</label>
-                                        <input
-                                        className="w-96 rounded-lg border border-gray-300 focus:outline-none focus:ring active:bg-gray-300 p-3 text-sm"
-                                        placeholder="eg. Doe's CV"
-                                        type="text"
-                                        id="name"
-                                        required
-                                        onChange={(e) => setTimeUploaded(e.target.value)}
-                                        value={timeUploaded.toLocaleTimeString()} 
-                                        />
-                                    </div>
 
 
                                     <p className='text-md mt-10 font-medium'>
@@ -255,12 +158,12 @@ function Summary() {
                                     <iframe
                                     className='w-full'
                                         src={image}
-                                        accept=".png,.jpg,.jpeg,.pdf,.docx"
                                     >
                                         </iframe>
                                     )}
 
-                                    <a className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" onClick={uploadFile}>
+
+                                    <a type='submit' className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
                                         <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
                                             <svg
                                             className="h-5 w-5"
