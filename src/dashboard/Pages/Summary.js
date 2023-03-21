@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState, useRef, useEffect} from 'react'
 import PartialNavbar from "../Partials/PartialNavbar";
 import Sidebar from '../Partials/Sidebar';
@@ -67,7 +68,7 @@ function Summary() {
     const [haveMetamask, sethaveMetamask] = useState(true);
     const [accountAddress, setAccountAddress] = useState('');
     const [name, setName] = useState("");
-    const [timeUploaded, setTimeUploaded] = useState('');
+    const [timeUploaded, setTimeUploaded] = useState(new Date());
     const [image, setImage] = useState(``);
 
     useEffect(() => {
@@ -111,12 +112,14 @@ function Summary() {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
 
+            const time = new Date(timeUploaded);
+
             const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
             const transaction = await contract.uploadFile( 
                 [
                     name,
                     accountAddress,
-                    timeUploaded,
+                    Math.floor(time.getTime() / 1000),
                     image
                 ]
             );
@@ -248,6 +251,7 @@ function Summary() {
                                     </div>
 
                                     {image && (
+                                    // eslint-disable-next-line jsx-a11y/iframe-has-title
                                     <iframe
                                     className='w-full'
                                         src={image}
@@ -256,7 +260,7 @@ function Summary() {
                                         </iframe>
                                     )}
 
-                                    <a className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" href="/">
+                                    <a className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" onClick={uploadFile}>
                                         <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
                                             <svg
                                             className="h-5 w-5"
@@ -300,7 +304,7 @@ function Summary() {
                 <div className='w-full'>
 
                 <div className='p-8'>
-                <a onClick={() => setShowModal(true)} data-role="smoothscroll" className="group relative inline-block overflow-hidden border border-green-600 px-8 py-3 focus:outline-none focus:ring" href="#nothing">
+                <a onClick={() => setShowModal(true)} data-role="smoothscroll" className="group relative inline-block overflow-hidden border border-green-600 px-8 py-3 focus:outline-none focus:ring">
                     <span className="absolute inset-x-0 bottom-0 h-[2px] bg-green-600 transition-all group-hover:h-full group-active:bg-green-600"></span>
 
                     <span className="relative text-sm font-medium text-green-600 transition-colors group-hover:text-white">
