@@ -67,7 +67,17 @@ function Summary() {
     const [haveMetamask, sethaveMetamask] = useState(true);
     const [accountAddress, setAccountAddress] = useState('');
     const [name, setName] = useState("");
+    const [timeUploaded, setTimeUploaded] = useState('');
     const [image, setImage] = useState(``);
+
+    useEffect(() => {
+        var timer = setInterval(()=>setTimeUploaded(new Date()), 1000 )
+        return function cleanup() {
+            clearInterval(timer)
+        }
+    
+    });
+
 
     useEffect(() => {
         const { ethereum } = window;
@@ -91,6 +101,7 @@ function Summary() {
     async function uploadFile() {
         if (!name) return;
         if (!accountAddress) return;
+        if (!timeUploaded) return;
         if (!image) return;
 
          // If MetaMask exists
@@ -105,12 +116,14 @@ function Summary() {
                 [
                     name,
                     accountAddress,
+                    timeUploaded,
                     image
                 ]
             );
 
             setName("");
             setAccountAddress("");
+            setTimeUploaded("");
             setImage("");
             await transaction.wait();
 
@@ -191,6 +204,8 @@ function Summary() {
                                         />
                                     </div>
 
+                                   
+
                                     <div className='hidden'>
                                         <label className="sr-only" for="address">Name</label>
                                         <input
@@ -203,6 +218,10 @@ function Summary() {
                                         value={accountAddress} 
                                         />
                                     </div>
+
+                                    <p className='text-md mt-15 font-medium'>
+                                        Time : {timeUploaded.toLocaleTimeString()}
+                                    </p> 
 
                                     <p className='text-md mt-10 font-medium'>
                                         Choose File
