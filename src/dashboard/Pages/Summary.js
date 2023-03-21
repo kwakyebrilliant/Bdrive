@@ -69,6 +69,8 @@ function Summary() {
     const [image, setImage] = useState(``);
 
     const [showModal, setShowModal] = useState(false);
+
+    
   return (
     <div className='text-black'>
         <>
