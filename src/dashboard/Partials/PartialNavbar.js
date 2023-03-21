@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 
-import {  AiOutlineLogout, AiOutlineArrowDown, AiOutlineArrowUp, AiFillPieChart, AiFillUsb } from 'react-icons/ai'
+import { AiOutlineArrowDown, AiOutlineArrowUp, AiFillPieChart, AiFillUsb } from 'react-icons/ai'
 import {  FaPeopleArrows, FaHeart, FaClock } from 'react-icons/fa'
 
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
