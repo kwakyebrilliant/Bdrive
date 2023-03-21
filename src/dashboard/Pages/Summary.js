@@ -219,9 +219,19 @@ function Summary() {
                                         />
                                     </div>
 
-                                    <p className='text-md mt-15 font-medium'>
-                                        Time : {timeUploaded.toLocaleTimeString()}
-                                    </p> 
+                                    <div className='hidden'>
+                                        <label className="sr-only" for="address">Name</label>
+                                        <input
+                                        className="w-96 rounded-lg border border-gray-300 focus:outline-none focus:ring active:bg-gray-300 p-3 text-sm"
+                                        placeholder="eg. Doe's CV"
+                                        type="text"
+                                        id="name"
+                                        required
+                                        onChange={(e) => setTimeUploaded(e.target.value)}
+                                        value={timeUploaded.toLocaleTimeString()} 
+                                        />
+                                    </div>
+
 
                                     <p className='text-md mt-10 font-medium'>
                                         Choose File
