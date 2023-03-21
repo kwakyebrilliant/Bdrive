@@ -84,9 +84,26 @@ function Summary() {
         checkMetamaskAvailability();
       }, []);
 
+
     const [showModal, setShowModal] = useState(false);
 
-    
+
+    async function uploadFile() {
+        if (!name) return;
+        if (!image) return;
+
+         // If MetaMask exists
+        if (typeof window.ethereum !== "undefined") {
+            // await requestAccount();
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+
+            const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
+            
+
+        }
+    }
   return (
     <div className='text-black'>
         <>
