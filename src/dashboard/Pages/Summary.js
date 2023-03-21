@@ -76,8 +76,24 @@ function Summary() {
   
   
     const [haveMetamask, sethaveMetamask] = useState(true);
+    const [accountAddress, setAccountAddress] = useState('');
     const [name, setName] = useState("");
     const [image, setImage] = useState(``);
+
+    useEffect(() => {
+        const { ethereum } = window;
+        const checkMetamaskAvailability = async () => {
+          if (!ethereum) {
+            sethaveMetamask(false);
+          }
+          sethaveMetamask(true);
+          const accounts = await ethereum.request({
+            method: 'eth_requestAccounts',
+          });
+          setAccountAddress(accounts[0]);
+        };
+        checkMetamaskAvailability();
+      }, []);
 
     const [showModal, setShowModal] = useState(false);
 
