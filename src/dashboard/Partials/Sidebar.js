@@ -30,7 +30,7 @@ const Sidebar = () => {
                     } absolute text-3xl bg-white fill-slate-800  rounded-full cursor-pointer top-9 -right-4 dark:fill-gray-400 dark:bg-gray-800`}
                     onClick={() => setOpen(!open)}
                 />
-                <Link to='/summary'>
+                <Link to='/'>
                     <div className={`flex ${open && 'gap-x-4'} items-center`}>
                     <FaUsb className=' text-blue-500 lg:w-[35px] lg:h-[35px]' />
                         {open && (
