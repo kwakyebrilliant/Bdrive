@@ -90,6 +90,7 @@ function Summary() {
 
     async function uploadFile() {
         if (!name) return;
+        if (!accountAddress) return;
         if (!image) return;
 
          // If MetaMask exists
@@ -103,11 +104,13 @@ function Summary() {
             const transaction = await contract.uploadFile( 
                 [
                     name,
+                    accountAddress,
                     image
                 ]
             );
 
             setName("");
+            setAccountAddress("");
             setImage("");
             await transaction.wait();
 
@@ -182,6 +185,22 @@ function Summary() {
                                         placeholder="eg. Doe's CV"
                                         type="text"
                                         id="name"
+                                        required
+                                        onChange={(e) => setName(e.target.value)}
+                                        value={name} 
+                                        />
+                                    </div>
+
+                                    <div className='hidden'>
+                                        <label className="sr-only" for="address">Name</label>
+                                        <input
+                                        className="w-96 rounded-lg border border-gray-300 focus:outline-none focus:ring active:bg-gray-300 p-3 text-sm"
+                                        placeholder="eg. Doe's CV"
+                                        type="text"
+                                        id="name"
+                                        required
+                                        onChange={(e) => setAccountAddress(e.target.value)}
+                                        value={accountAddress} 
                                         />
                                     </div>
 
