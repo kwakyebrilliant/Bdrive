@@ -21,6 +21,40 @@ const PartialNavbar = () => {
     const handleClick2 = () => setdropdown(!dropdown)
 
     const handleClose2 =()=> setdropdown(!dropdown)
+    
+    const [provider, setProvider] = useState(null);
+  const [account, setAccount] = useState(null);
+
+  async function connectToMetamask() {
+    if (window.ethereum) {
+      try {
+        // Request account access if needed
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const account = await signer.getAddress();
+        setProvider(provider);
+        setAccount(account);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      console.error("Metamask not detected");
+    }
+  }
+
+  useEffect(() => {
+    async function checkMetamaskConnection() {
+      if (window.ethereum) {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const account = await signer.getAddress();
+        setProvider(provider);
+        setAccount(account);
+      }
+    }
+    checkMetamaskConnection();
+  }, []);
 
 
   return (
@@ -63,8 +97,19 @@ const PartialNavbar = () => {
 
                                 <ul className={!dropdown ? 'hidden' : 'absolute right-12 mt-2 bg-zinc-900 px-8'}>
                                     <li className='border-zinc-900 w-fit text-white'>
-                                    
-                                    iuioou
+                                    {account ? (
+                                        <p> {account.slice(0, 6)}…{account.slice(account.length - 6)}</p>
+                                    ) : (
+                                        <a
+                                        className="text-center cursor-pointer items-center px-8 py-2 mx-2 text-white bg-blue-600 border border-blue-600 rounded hover:bg-transparent hover:text-blue-600 active:text-blue-500 focus:outline-none focus:ring"
+                                        type="submit"
+                                        onClick={connectToMetamask}
+                                        >
+                                        <span className="text-sm font-medium">
+                                        Connect Wallet
+                                        </span>
+                                        </a>
+                                    )}
                                     </li>
                                     <li className='border-zinc-900 w-fit text-white'><Link to="/" className='flex' onClick={handleClose2}><AiOutlineLogout className='text-2xl mr-4' />Logout</Link></li>
                                 </ul>
