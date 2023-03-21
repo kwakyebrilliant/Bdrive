@@ -23,7 +23,7 @@ const PartialNavbar = () => {
     const handleClose2 =()=> setdropdown(!dropdown)
     
     const [provider, setProvider] = useState(null);
-  const [account, setAccount] = useState(null);
+    const [account, setAccount] = useState(null);
 
   async function connectToMetamask() {
     if (window.ethereum) {
@@ -41,6 +41,11 @@ const PartialNavbar = () => {
     } else {
       console.error("Metamask not detected");
     }
+  }
+
+  function disconnectFromMetamask() {
+    setProvider(null);
+    setAccount(null);
   }
 
   useEffect(() => {
@@ -98,7 +103,18 @@ const PartialNavbar = () => {
                                 <ul className={!dropdown ? 'hidden' : 'absolute right-12 mt-2 bg-zinc-900 px-8'}>
                                     <li className='border-zinc-900 w-fit text-white'>
                                     {account ? (
+                                        <>
                                         <p> {account.slice(0, 6)}…{account.slice(account.length - 6)}</p>
+                                        <a
+                                        className="text-center mt-5 cursor-pointer items-center px-8 py-2 mx-2 text-white bg-blue-600 border border-blue-600 rounded hover:bg-transparent hover:text-blue-600 active:text-blue-500 focus:outline-none focus:ring"
+                                        type="submit"
+                                        onClick={disconnectFromMetamask}
+                                        >
+                                        <span className="text-sm font-medium">
+                                        Disconnect
+                                        </span>
+                                        </a>
+                                        </>
                                     ) : (
                                         <a
                                         className="text-center cursor-pointer items-center px-8 py-2 mx-2 text-white bg-blue-600 border border-blue-600 rounded hover:bg-transparent hover:text-blue-600 active:text-blue-500 focus:outline-none focus:ring"
@@ -111,7 +127,6 @@ const PartialNavbar = () => {
                                         </a>
                                     )}
                                     </li>
-                                    <li className='border-zinc-900 w-fit text-white'><Link to="/" className='flex' onClick={handleClose2}><AiOutlineLogout className='text-2xl mr-4' />Logout</Link></li>
                                 </ul>
                             
                                 </div> 
