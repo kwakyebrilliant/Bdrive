@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/brilliantkwakye/Documents/web3/bdrive/contracts/Bdrive.sol": {
-      "lastModificationDate": 1679316135325,
-      "contentHash": "b7db026c42d663c0da189d5c34d4d979",
+      "lastModificationDate": 1679522975065,
+      "contentHash": "bd88a79f1b333194119da9a4b08d2aa4",
       "sourceName": "contracts/Bdrive.sol",
       "solcConfig": {
         "version": "0.8.4",
