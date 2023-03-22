@@ -63,6 +63,48 @@ function Summary() {
     const [name, setName] = useState("");
     const [image, setImage] = useState(``);
 
+    useEffect(() => {
+        const { ethereum } = window;
+      
+        const requestAccount = async () => {
+          if (!ethereum) {
+            sethaveMetamask(false);
+          }
+          sethaveMetamask(true);
+          const accounts = await ethereum.request({
+            method: 'eth_requestAccounts',
+          });
+          setAccountAddress(accounts[0]);
+        };
+        requestAccount();
+      }, []);
+ 
+
+      async function uploadFile() {
+
+        if (!name) return;
+        if (!image) return;
+        
+            // If MetaMask exists
+            if (typeof window.ethereum !== "undefined") {
+                // await requestAccount();
+
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const signer = provider.getSigner();
+
+
+                const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
+                const transaction = await contract.uploadFile(name, image);
+
+                setName("");
+                setImage("");
+                await transaction.wait();
+
+            }
+            window.location.reload(false);
+
+      }
+
     const [showModal, setShowModal] = useState(false);
     
   return (
@@ -134,6 +176,8 @@ function Summary() {
                                         type="text"
                                         id="name"
                                         required
+                                        onChange={(e) => setName(e.target.value)}
+                                        value={name}
                                         />
                                     </div>
 
@@ -163,7 +207,7 @@ function Summary() {
                                     )}
 
 
-                                    <a type='submit' className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
+                                    <a type='submit' onClick={uploadFile} className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
                                         <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
                                             <svg
                                             className="h-5 w-5"
