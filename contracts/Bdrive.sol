@@ -9,16 +9,14 @@ contract Bdrive {
         bool isShared;
         uint256 timeUploaded;
         uint256 timeShared;
-        string image;
+        bytes image;
     }
-
 
     mapping (address => File[]) private files;
 
-    // Allows a user to upload a file to the storage platform by entering the file name.
-    function uploadFile(string memory _name, string memory _image) public {
+    function uploadFile(string memory _name, bytes memory _image) public {
         require(bytes(_name).length > 0, "File name should not be empty");
-        require(bytes(_image).length > 0, "File image should not be empty");
+        require(_image.length > 0, "Image should not be empty");
         files[msg.sender].push(File({
             name: _name,
             owner: msg.sender,
@@ -30,13 +28,11 @@ contract Bdrive {
         }));
     }
 
-
-    // Returns an array of all files uploaded by the user
-    function listFiles() public view returns (string[] memory, uint256[] memory, string[] memory) {
+    function listFiles() public view returns (string[] memory, uint256[] memory, bytes[] memory) {
         uint256 length = files[msg.sender].length;
         string[] memory names = new string[](length);
         uint256[] memory timestamps = new uint256[](length);
-        string[] memory images = new string[](length);
+        bytes[] memory images = new bytes[](length);
         for (uint256 i = 0; i < length; i++) {
             names[i] = files[msg.sender][i].name;
             timestamps[i] = files[msg.sender][i].timeUploaded;
@@ -45,9 +41,7 @@ contract Bdrive {
         return (names, timestamps, images);
     }
 
-
-    // Allows a user to share one of their files with another user
-   function shareFile(uint256 _index, address _recipient) public {
+    function shareFile(uint256 _index, address _recipient) public {
         require(_index < files[msg.sender].length, "Invalid index");
         require(files[msg.sender][_index].owner == msg.sender, "You do not own this file");
         require(_recipient != msg.sender, "Recipient address should not be your own");
@@ -56,9 +50,7 @@ contract Bdrive {
         files[msg.sender][_index].timeShared = block.timestamp;
     }
 
-
-// Returns an array of the names of all files shared with the user
-function listSharedFiles() public view returns (string[] memory, uint256[] memory, string[] memory) {
+    function listSharedFiles() public view returns (string[] memory, uint256[] memory, bytes[] memory) {
         uint256 length = files[msg.sender].length;
         uint256 sharedCount = 0;
         for (uint256 i = 0; i < length; i++) {
@@ -68,7 +60,7 @@ function listSharedFiles() public view returns (string[] memory, uint256[] memor
         }
         string[] memory sharedFiles = new string[](sharedCount);
         uint256[] memory timestamps = new uint256[](sharedCount);
-        string[] memory images = new string[](sharedCount);
+        bytes[] memory images = new bytes[](sharedCount);
         sharedCount = 0;
         for (uint256 i = 0; i < length; i++) {
             if (files[msg.sender][i].isShared) {
@@ -80,5 +72,4 @@ function listSharedFiles() public view returns (string[] memory, uint256[] memor
         }
         return (sharedFiles, timestamps, images);
     }
-
 }
