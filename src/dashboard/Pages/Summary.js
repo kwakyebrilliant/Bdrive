@@ -1,109 +1,56 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import PartialNavbar from "../Partials/PartialNavbar";
 import Sidebar from '../Partials/Sidebar';
 
-import { Web3Storage } from 'web3.storage';
 
 import { ethers } from 'ethers';
 import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
 const bdriveAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
-function getAccessToken () {
-
-  return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDE0ZGU4NTUwMjAxMTdENDIyY0IxOTRBREJiZERlOTJGZjBkYzkxNzciLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzkzMTA5MjU2NDcsIm5hbWUiOiJCRHJpdmUifQ.hQVswoHltLw7O53wrarZP5lVW00dTI-lW6GmE4ozt6Q'
-}
-
-function makeStorageClient () {
-  return new Web3Storage({ token: getAccessToken() })
-}
 
 function Summary() {
+    const [provider, setProvider] = useState(null);
+    const [contract, setContract] = useState(null);
+    const [file, setFile] = useState(null);
+    const [fileName, setFileName] = useState('');
 
-    const hiddenFileInput = useRef(null);
-
-    // const [show, setShow] = useState(false);
-  
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
-    
-    const handleClick = () => {
-      hiddenFileInput.current.click();
-    };
-  
-    async function handleChange(event) {
-      const fileUploaded = event.target.files[0];
-      setImage(URL.createObjectURL(event.target.files[0]));
-      const client = makeStorageClient()
-      const cid = await client.put([fileUploaded])
-      console.log('stored files with cid:', cid)
-  
-      const res = await client.get(cid)
-      console.log(`Got a response! [${res.status}] ${res.statusText}`)
-      if (!res.ok) {
-        throw new Error(`failed to get ${cid} - [${res.status}] ${res.statusText}`)
-      }
-  
-  
-      const filess = await res.files();
-      setImage(`https://${cid}.ipfs.dweb.link/${fileUploaded.name}`);
-      console.log(image)
-      console.log(fileUploaded)
-      for (const file of filess) {
-        console.log(`${file.cid} -- ${file.path} -- ${file.size}`)
-      }
-      return cid
-  
-    };
-
-  
-    const [haveMetamask, sethaveMetamask] = useState(true);
-    const [accountAddress, setAccountAddress] = useState('');
-    const [name, setName] = useState("");
-    const [image, setImage] = useState(``);
 
     useEffect(() => {
-        const { ethereum } = window;
-      
-        const requestAccount = async () => {
-          if (!ethereum) {
-            sethaveMetamask(false);
+        async function connect() {
+          if (window.ethereum) {
+            const ethProvider = new ethers.providers.Web3Provider(window.ethereum);
+            await window.ethereum.enable();
+            const signer = ethProvider.getSigner();
+            const network = await ethProvider.getNetwork();
+            const bdriveAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'; // Replace with the actual contract address
+            const storagePlatformContract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
+            setProvider(ethProvider);
+            setContract(storagePlatformContract);
+          } else {
+            alert('Please install MetaMask to use this app');
           }
-          sethaveMetamask(true);
-          const accounts = await ethereum.request({
-            method: 'eth_requestAccounts',
-          });
-          setAccountAddress(accounts[0]);
-        };
-        requestAccount();
+        }
+        connect();
       }, []);
- 
+
 
       async function uploadFile() {
-
-        if (!name) return;
-        if (!image) return;
-        
-            // If MetaMask exists
-            if (typeof window.ethereum !== "undefined") {
-                // await requestAccount();
-
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
-                const signer = provider.getSigner();
-
-
-                const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
-                const transaction = await contract.uploadFile(name, image);
-
-                setName("");
-                setImage("");
-                await transaction.wait();
-
-            }
-            window.location.reload(false);
-
+        if (!file || !fileName) {
+          alert('Please select a file and enter a file name');
+          return;
+        }
+        const reader = new FileReader();
+        reader.onloadend = async () => {
+          const fileBuffer = Buffer.from(reader.result);
+          const tx = await contract.uploadFile(fileName, fileBuffer);
+          await tx.wait();
+          alert('File uploaded successfully');
+        };
+        reader.readAsArrayBuffer(file);
       }
+ 
 
     const [showModal, setShowModal] = useState(false);
     
@@ -122,7 +69,7 @@ function Summary() {
                         <div className="sm:justify-between sm:items-center sm:flex">
                         <div className="text-center sm:text-left">
                             <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-                            Welcome Back, {accountAddress.slice(0, 6)}…{accountAddress.slice(accountAddress.length - 6)}
+                            Welcome Back, User
                             </h1>
 
                             <p className="mt-1.5 text-sm text-gray-900">
@@ -176,8 +123,8 @@ function Summary() {
                                         type="text"
                                         id="name"
                                         required
-                                        onChange={(e) => setName(e.target.value)}
-                                        value={name}
+                                        value={fileName} 
+                                        onChange={(e) => setFileName(e.target.value)}
                                         />
                                     </div>
 
@@ -192,22 +139,15 @@ function Summary() {
                                             <svg className="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                 <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                             </svg>
-                                            <span className="mt-2 text-base leading-normal" onClick={handleClick}>Select a file</span>
-                                            <input type='file' ref={hiddenFileInput} onChange={handleChange} className="hidden" />
+                                            <span className="mt-2 text-base leading-normal">Select a file</span>
+                                            <input type='file' onChange={(e) => setFile(e.target.files[0])} className="hidden" />
                                         </label>
                                     </div>
 
-                                    {image && (
-                                    // eslint-disable-next-line jsx-a11y/iframe-has-title
-                                    <iframe
-                                    className='w-full'
-                                        src={image}
-                                    >
-                                        </iframe>
-                                    )}
+                                   
 
 
-                                    <a type='submit' onClick={uploadFile} className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
+                                    <a onClick={uploadFile} type='submit' className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
                                         <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
                                             <svg
                                             className="h-5 w-5"
