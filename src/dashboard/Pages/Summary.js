@@ -57,8 +57,6 @@ function Summary() {
 
 
       async function uploadFile() {
-        if (!name) return;
-        if (!image) return;
 
         // If MetaMask exists
         if (typeof window.ethereum !== "undefined") {
@@ -68,13 +66,7 @@ function Summary() {
             const signer = provider.getSigner();
 
             const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
-            const transaction = await contract.uploadFile(
-                name,
-                image
-             );
-
-             setName("");
-             setImage("");
+            const transaction = await contract.uploadFile(name, image);
              await transaction.wait();
         }
         window.location.reload(false);
@@ -177,6 +169,8 @@ function Summary() {
                                         type="text"
                                         id="name"
                                         required
+                                        onChange={(e) => setName(e.target.value)}
+                                        value={name} 
                                         />
                                     </div>
 
@@ -187,17 +181,24 @@ function Summary() {
                                     </p> 
 
                                     <div className="flex cursor-pointer w-full items-center justify-center bg-grey-lighter">
-                                        <label className="w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-600 hover:text-white">
+                                        <label onClick={handleClick} className="w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-600 hover:text-white">
                                             <svg className="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                 <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                             </svg>
                                             <span className="mt-2 text-base leading-normal">Select a file</span>
-                                            <input type='file' className="hidden" />
                                         </label>
+                                        <input type='file' ref={hiddenFileInput} onChange={handleChange} className="hidden" />
                                     </div>
 
+                                    {image && (
+                                    <iframe
+                                    className='w-full'
+                                        src={image}
+                                    >
+                                        </iframe>
+                                    )}
 
-                                    <a type='submit' className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
+                                    <a type='submit' onClick={uploadFile} className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
                                         <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
                                             <svg
                                             className="h-5 w-5"
