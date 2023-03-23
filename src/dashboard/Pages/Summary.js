@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 import PartialNavbar from "../Partials/PartialNavbar";
 import Sidebar from '../Partials/Sidebar';
 
 import { ethers } from 'ethers';
+import { create } from 'ipfs-http-client';
 import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
 const bdriveAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
@@ -12,6 +13,15 @@ const bdriveAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 function Summary() {
 
     const [showModal, setShowModal] = useState(false);
+
+    const [name, setName] = useState('');
+    const [image, setImage] = useState('');
+    const [message, setMessage] = useState('');
+    const [provider, setProvider] = useState(null);
+    const [contract, setContract] = useState(null);
+
+
+    
     
   return (
     <div className='text-black'>
