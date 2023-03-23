@@ -2,21 +2,21 @@
 pragma solidity ^0.8.4;
 
 contract Bdrive {
-     struct File {
+      struct File {
         string name;
         address owner;
         address recipient;
         bool isShared;
         uint256 timeUploaded;
         uint256 timeShared;
-        bytes image;
+        string image;
     }
 
     mapping (address => File[]) private files;
 
-    function uploadFile(string memory _name, bytes memory _image) public {
+    function uploadFile(string memory _name, string memory _image) public {
         require(bytes(_name).length > 0, "File name should not be empty");
-        require(_image.length > 0, "Image should not be empty");
+        require(bytes(_image).length > 0, "Image string should not be empty");
         files[msg.sender].push(File({
             name: _name,
             owner: msg.sender,
@@ -28,11 +28,11 @@ contract Bdrive {
         }));
     }
 
-    function listFiles() public view returns (string[] memory, uint256[] memory, bytes[] memory) {
+    function listFiles() public view returns (string[] memory, uint256[] memory, string[] memory) {
         uint256 length = files[msg.sender].length;
         string[] memory names = new string[](length);
         uint256[] memory timestamps = new uint256[](length);
-        bytes[] memory images = new bytes[](length);
+        string[] memory images = new string[](length);
         for (uint256 i = 0; i < length; i++) {
             names[i] = files[msg.sender][i].name;
             timestamps[i] = files[msg.sender][i].timeUploaded;
@@ -50,7 +50,7 @@ contract Bdrive {
         files[msg.sender][_index].timeShared = block.timestamp;
     }
 
-    function listSharedFiles() public view returns (string[] memory, uint256[] memory, bytes[] memory) {
+    function listSharedFiles() public view returns (string[] memory, uint256[] memory, string[] memory) {
         uint256 length = files[msg.sender].length;
         uint256 sharedCount = 0;
         for (uint256 i = 0; i < length; i++) {
@@ -60,7 +60,7 @@ contract Bdrive {
         }
         string[] memory sharedFiles = new string[](sharedCount);
         uint256[] memory timestamps = new uint256[](sharedCount);
-        bytes[] memory images = new bytes[](sharedCount);
+        string[] memory images = new string[](sharedCount);
         sharedCount = 0;
         for (uint256 i = 0; i < length; i++) {
             if (files[msg.sender][i].isShared) {
