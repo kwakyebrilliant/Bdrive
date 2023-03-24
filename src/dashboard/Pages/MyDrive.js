@@ -13,8 +13,14 @@ const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
 function MyDrive() {
   const [showModal, setShowModal] = useState(false);
 
-  const [currentFileUpload, setCurrentFileUpload] = useState([]);
+  const [currentListFiles, setCurrentListFiles] = useState([]);
   const [accountAddress, setAccountAddress] = useState('');
+
+  useEffect(() => {
+    async function listFiles() {
+
+    }
+  })
 
   return (
     <div className='text-black'>
