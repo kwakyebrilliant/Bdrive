@@ -31,7 +31,18 @@ function MyDrive() {
         BDrive.abi,
         provider
       );
-      
+      try {
+        const data = await contract.listFiles();
+        console.log("data: ", data);
+        setCurrentListFiles(data)
+        for (var i = 1; i <= data; i++) {
+          const currentListFiless = await contract.name(i);
+          setCurrentListFiles((currentListFiles) => [...currentListFiles, currentListFiless]);
+
+        }
+      } catch (error) {
+        console.log("Error: ", error);
+      }
       }
     }
   })
