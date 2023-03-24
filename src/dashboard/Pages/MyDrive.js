@@ -7,51 +7,11 @@ import { FaShare } from 'react-icons/fa'
 import { ethers } from 'ethers';
 import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
-// const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
+const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
 
  
 function MyDrive() {
   const [showModal, setShowModal] = useState(false);
-
-  const [files, setFiles] = useState([]);
-  const [error, setError] = useState(null);
-
-  async function listFiles() {
-    try {
-      // Check if MetaMask is installed and connected
-      if (window.ethereum) {
-        await window.ethereum.enable();
-      } else {
-        throw new Error('MetaMask is not installed or not connected');
-      }
-
-      // Create a new ethers.js provider using the user's Ethereum provider
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-      // Create a new instance of the StoragePlatform contract
-      const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";// Replace with your contract address
-      const contract = new ethers.Contract(bdriveAddress, BDrive.abi, provider);
-
-      // Call the listFiles function on the smart contract to get the user's files
-      const [names, timestamps, images] = await contract.listFiles();
-
-      // Combine the file name, timestamp, and image data into an array of file objects
-      const files = names.map((name, i) => {
-        const timestamp = new Date(timestamps[i] * 1000);
-        return { name, timestamp, image: images[i] };
-      });
-
-      // Update the state with the list of files
-      setFiles(files);
-    } catch (error) {
-      setError(error.message);
-    }
-  }
-
-   // Load the user's files when the component mounts
-   useEffect(() => {
-    listFiles();
-  }, []);
 
 
   return (
@@ -314,19 +274,19 @@ function MyDrive() {
                 <div className='w-full'>
                 <div className='relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
 
-                <a href="#nothing" className="block">
+                <a href="#nothing" class="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong className="font-medium">Stands</strong>
+                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong class="font-medium">Stands</strong>
 
-                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
@@ -346,19 +306,19 @@ function MyDrive() {
                   </div>
                 </a>
 
-                <a href="#nothing" className="block">
+                <a href="#nothing" class="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong className="font-medium">Stands</strong>
+                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong class="font-medium">Stands</strong>
 
-                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
@@ -378,19 +338,19 @@ function MyDrive() {
                   </div>
                 </a>
 
-                <a href="#nothing" className="block">
+                <a href="#nothing" class="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong className="font-medium">Stands</strong>
+                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong class="font-medium">Stands</strong>
 
-                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
@@ -410,19 +370,19 @@ function MyDrive() {
                   </div>
                 </a>
 
-                <a href="#nothing" className="block">
+                <a href="#nothing" class="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong className="font-medium">Stands</strong>
+                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong class="font-medium">Stands</strong>
 
-                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
