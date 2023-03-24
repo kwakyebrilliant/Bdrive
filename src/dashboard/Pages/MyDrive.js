@@ -314,19 +314,19 @@ function MyDrive() {
                 <div className='w-full'>
                 <div className='relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
 
-                <a href="#nothing" class="block">
+                <a href="#nothing" className="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong class="font-medium">Stands</strong>
+                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong className="font-medium">Stands</strong>
 
-                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
@@ -346,19 +346,19 @@ function MyDrive() {
                   </div>
                 </a>
 
-                <a href="#nothing" class="block">
+                <a href="#nothing" className="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong class="font-medium">Stands</strong>
+                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong className="font-medium">Stands</strong>
 
-                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
@@ -378,19 +378,19 @@ function MyDrive() {
                   </div>
                 </a>
 
-                <a href="#nothing" class="block">
+                <a href="#nothing" className="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong class="font-medium">Stands</strong>
+                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong className="font-medium">Stands</strong>
 
-                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
@@ -410,19 +410,19 @@ function MyDrive() {
                   </div>
                 </a>
 
-                <a href="#nothing" class="block">
+                <a href="#nothing" className="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong class="font-medium">Stands</strong>
+                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong className="font-medium">Stands</strong>
 
-                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
