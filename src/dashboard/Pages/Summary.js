@@ -11,7 +11,7 @@ const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
 
 function getAccessToken () {
    
-    return ''
+    return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDE0ZGU4NTUwMjAxMTdENDIyY0IxOTRBREJiZERlOTJGZjBkYzkxNzciLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzkzMTA5MjU2NDcsIm5hbWUiOiJCRHJpdmUifQ.hQVswoHltLw7O53wrarZP5lVW00dTI-lW6GmE4ozt6Q'
   }
 
   function makeStorageClient () {
@@ -22,6 +22,29 @@ function getAccessToken () {
 function Summary() {
 
     const [showModal, setShowModal] = useState(false);
+
+    const [name, setName] = useState("");
+    const [image, setImage] = useState(``);
+    const [haveMetamask, sethaveMetamask] = useState(true);
+    const [useraddress, setUserAddress] = useState('');
+
+
+    useEffect(() => {
+        const { ethereum } = window;
+      
+        const requestAccount = async () => {
+          if (!ethereum) {
+            sethaveMetamask(false);
+          }
+          sethaveMetamask(true);
+          const accounts = await ethereum.request({
+            method: 'eth_requestAccounts',
+          });
+          setUserAddress(accounts[0]);
+        };
+        requestAccount();
+      }, []);
+      
     
     
   return (
