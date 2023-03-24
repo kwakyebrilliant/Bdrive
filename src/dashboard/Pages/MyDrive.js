@@ -91,7 +91,7 @@ function MyDrive() {
         <div key={file.name}>
           <h2>{file.name}</h2>
           <p>Timestamp: {new Date(file.timestamp * 1000).toLocaleString()}</p>
-          <img src={`data:image/jpeg;base64,${file.image}`} alt={file.name} />
+          <img src={`data:image/png;base64,${file.image}`} alt={file.name} />
         </div>
       ))}
     </div>
