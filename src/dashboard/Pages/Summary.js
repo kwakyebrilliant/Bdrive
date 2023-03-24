@@ -92,13 +92,17 @@ function Summary() {
 
     const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
     const transaction = await contract.uploadFile( 
-        
-    )
+        name,
+        image
+    );
 
-
+    setName("");
+    setImage("");
+    await transaction.wait();
   }
+  window.location.reload(false);
 
-      }
+}
     
   return (
     <div className='text-black'>
