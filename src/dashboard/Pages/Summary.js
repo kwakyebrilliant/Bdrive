@@ -1,70 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import PartialNavbar from "../Partials/PartialNavbar";
 import Sidebar from '../Partials/Sidebar';
 
 import { ethers } from 'ethers';
-import { create } from 'ipfs-http-client';
 import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
-// const bdriveAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
 
 
 function Summary() {
 
     const [showModal, setShowModal] = useState(false);
-
-    const [name, setName] = useState('');
-    const [image, setImage] = useState('');
-    const [message, setMessage] = useState('');
-    const [provider, setProvider] = useState(null);
-    const [contract, setContract] = useState(null);
-
-    useEffect(() => {
-        const checkMetamask = async () => {
-          if (window.ethereum) {
-            try {
-              await window.ethereum.enable();
-              const provider = new ethers.providers.Web3Provider(window.ethereum);
-              setProvider(provider);
-              const networkId = await provider.getNetwork().then(network => network.chainId);
-              const bdriveAddress = BDrive.networks[networkId].address;
-              const contract = new ethers.Contract(bdriveAddress, BDrive.abi, provider.getSigner());
-              setContract(contract);
-              setMessage('Connected to MetaMask');
-            } catch (error) {
-              setMessage('Failed to connect to MetaMask');
-            }
-          } else {
-            setMessage('Please install MetaMask to use this application');
-          }
-        };
-        checkMetamask();
-      }, []);
-
-
-
-      const handleNameChange = (event) => {
-        setName(event.target.value);
-      };
     
-      const handleImageChange = (event) => {
-        setImage(event.target.value);
-      };
-    
-      const handleUploadFile = async () => {
-        try {
-          const ipfsClient = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-          const imageBuffer = Buffer.from(image, 'utf-8');
-          const { cid } = await ipfsClient.add(imageBuffer);
-          const transaction = await contract.uploadFile(name, cid.toString());
-          await transaction.wait();
-          setMessage('File uploaded successfully');
-        } catch (error) {
-          setMessage('Failed to upload file');
-        }
-      };
-
     
   return (
     <div className='text-black'>
@@ -135,8 +83,6 @@ function Summary() {
                                         type="text"
                                         id="name"
                                         required
-                                        value={name}
-                                        onChange={handleNameChange}
                                         />
                                     </div>
 
@@ -152,16 +98,12 @@ function Summary() {
                                                 <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                             </svg>
                                             <span className="mt-2 text-base leading-normal">Select a file</span>
-                                            <input value={image} onChange={handleImageChange} type='file' className="hidden" />
+                                            <input type='file' className="hidden" />
                                         </label>
                                     </div>
 
-                                    <div className='w-full m-10'>
-                                        <span>{message}</span>
-                                    </div>
 
-
-                                    <a onClick={handleUploadFile} disabled={!contract} type='submit' className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
+                                    <a type='submit' className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
                                         <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
                                             <svg
                                             className="h-5 w-5"
