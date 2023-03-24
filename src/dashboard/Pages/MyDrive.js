@@ -48,6 +48,12 @@ function MyDrive() {
     }
   }
 
+   // Load the user's files when the component mounts
+   useEffect(() => {
+    listFiles();
+  }, []);
+
+
   return (
     <div className='text-black'>
         <>
