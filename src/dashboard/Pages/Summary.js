@@ -199,6 +199,14 @@ function Summary() {
                                         </label>
                                     </div>
 
+                                    {image && (
+                                        <iframe
+                                        className='w-full'
+                                            src={image}
+                                        >
+                                            </iframe>
+                                    )}
+
 
                                     <a type='submit' className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
                                         <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
