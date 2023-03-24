@@ -45,7 +45,9 @@ function MyDrive() {
       }
       }
     }
-  })
+
+    listFiles();
+  }, []);
 
   return (
     <div className='text-black'>
