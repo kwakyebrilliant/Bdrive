@@ -18,7 +18,15 @@ function MyDrive() {
 
   useEffect(() => {
     async function listFiles() {
-
+      const { ethereum } = window;
+      // If MetaMask exists
+  if (typeof window.ethereum !== "undefined") {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const accounts = await ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+      setAccountAddress(accounts[0]);
+      }
     }
   })
 
