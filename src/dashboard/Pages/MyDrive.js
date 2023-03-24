@@ -26,6 +26,12 @@ function MyDrive() {
         method: 'eth_requestAccounts',
       });
       setAccountAddress(accounts[0]);
+      const contract = new ethers.Contract(
+        bdriveAddress,
+        BDrive.abi,
+        provider
+      );
+      
       }
     }
   })
