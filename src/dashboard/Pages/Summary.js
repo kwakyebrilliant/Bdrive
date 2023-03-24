@@ -20,8 +20,28 @@ function Summary() {
     const [provider, setProvider] = useState(null);
     const [contract, setContract] = useState(null);
 
+    useEffect(() => {
+        const checkMetamask = async () => {
+          if (window.ethereum) {
+            try {
+              await window.ethereum.enable();
+              const provider = new ethers.providers.Web3Provider(window.ethereum);
+              setProvider(provider);
+              const networkId = await provider.getNetwork().then(network => network.chainId);
+              const bdriveAddress = BDrive.networks[networkId].address;
+              const contract = new ethers.Contract(bdriveAddress, BDrive.abi, provider.getSigner());
+              setContract(contract);
+              setMessage('Connected to MetaMask');
+            } catch (error) {
+              setMessage('Failed to connect to MetaMask');
+            }
+          } else {
+            setMessage('Please install MetaMask to use this application');
+          }
+        };
+        checkMetamask();
+      }, []);
 
-    
     
   return (
     <div className='text-black'>
