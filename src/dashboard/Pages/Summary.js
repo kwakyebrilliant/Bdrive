@@ -4,9 +4,19 @@ import PartialNavbar from "../Partials/PartialNavbar";
 import Sidebar from '../Partials/Sidebar';
 
 import { ethers } from 'ethers';
+import { Web3Storage } from 'web3.storage';
 import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
 const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
+
+function getAccessToken () {
+   
+    return ''
+  }
+
+  function makeStorageClient () {
+    return new Web3Storage({ token: getAccessToken() })
+  }
 
 
 function Summary() {
