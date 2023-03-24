@@ -42,6 +42,29 @@ function Summary() {
         checkMetamask();
       }, []);
 
+      
+
+      const handleNameChange = (event) => {
+        setName(event.target.value);
+      };
+    
+      const handleImageChange = (event) => {
+        setImage(event.target.value);
+      };
+    
+      const handleUploadFile = async () => {
+        try {
+          const ipfsClient = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
+          const imageBuffer = Buffer.from(image, 'utf-8');
+          const { cid } = await ipfsClient.add(imageBuffer);
+          const transaction = await contract.uploadFile(name, cid.toString());
+          await transaction.wait();
+          setMessage('File uploaded successfully');
+        } catch (error) {
+          setMessage('Failed to upload file');
+        }
+      };
+
     
   return (
     <div className='text-black'>
