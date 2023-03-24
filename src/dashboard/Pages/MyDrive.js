@@ -7,14 +7,47 @@ import { FaShare } from 'react-icons/fa'
 import { ethers } from 'ethers';
 import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
-const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
+// const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
+
+import { create as ipfsHttpClient } from "ipfs-http-client";
+
+const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
  
 function MyDrive() {
   const [showModal, setShowModal] = useState(false);
 
-  const [currentListFiles, setCurrentListFiles] = useState([]);
-  const [accountAddress, setAccountAddress] = useState(''); 
+  const [files, setFiles] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
+        const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
+        const [names, timestamps, cids] = await contract.listFiles();
+        const files = names.map((name, index) => ({
+          name,
+          timestamp: timestamps[index].toNumber(),
+          cid: cids[index],
+          image: ""
+        }));
+        setFiles(files);
+        await Promise.all(
+          files.map(async (file) => {
+            const data = await client.cat(file.cid);
+            file.image = data.toString("base64");
+          })
+        );
+        setFiles(files);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
+
 
 
   return (
@@ -51,6 +84,17 @@ function MyDrive() {
                   Suggested
                 </p>
                 </div>
+
+                <div>
+      <h1>List of Files</h1>
+      {files.map((file) => (
+        <div key={file.name}>
+          <h2>{file.name}</h2>
+          <p>Timestamp: {new Date(file.timestamp * 1000).toLocaleString()}</p>
+          <img src={`data:image/jpeg;base64,${file.image}`} alt={file.name} />
+        </div>
+      ))}
+    </div>
 
             
                 <div className='w-full'>
