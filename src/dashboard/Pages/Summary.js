@@ -7,7 +7,7 @@ import { ethers } from 'ethers';
 import { create } from 'ipfs-http-client';
 import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
-const bdriveAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+// const bdriveAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 
 function Summary() {
@@ -156,7 +156,7 @@ function Summary() {
                                         </label>
                                     </div>
 
-                                    <div className='w-full'>
+                                    <div className='w-full m-10'>
                                         <span>{message}</span>
                                     </div>
 
