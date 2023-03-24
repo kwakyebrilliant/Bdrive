@@ -42,7 +42,7 @@ function Summary() {
         checkMetamask();
       }, []);
 
-      
+
 
       const handleNameChange = (event) => {
         setName(event.target.value);
@@ -135,6 +135,8 @@ function Summary() {
                                         type="text"
                                         id="name"
                                         required
+                                        value={name}
+                                        onChange={handleNameChange}
                                         />
                                     </div>
 
