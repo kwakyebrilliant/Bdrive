@@ -156,6 +156,10 @@ function Summary() {
                                         </label>
                                     </div>
 
+                                    <div className='w-full'>
+                                        <span>{message}</span>
+                                    </div>
+
 
                                     <a onClick={handleUploadFile} disabled={!contract} type='submit' className="group w-full relative inline-flex items-center overflow-hidden rounded bg-blue-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-600" >
                                         <span className="absolute left-0 -translate-x-full transition-transform group-hover:translate-x-4">
