@@ -1,8 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import PartialNavbar from "../Partials/PartialNavbar";
 import Sidebar from '../Partials/Sidebar';
 
 import { FaShare } from 'react-icons/fa'
+
+import { ethers } from 'ethers';
+import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
+
+const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
 
  
 function MyDrive() {
