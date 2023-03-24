@@ -173,6 +173,8 @@ function Summary() {
                                         type="text"
                                         id="name"
                                         required
+                                        onChange={(e) => setName(e.target.value)}
+                                        value={name} 
                                         />
                                     </div>
 
