@@ -7,7 +7,7 @@ import { FaShare } from 'react-icons/fa'
 import { ethers } from 'ethers';
 import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
-const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
+// const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
 
  
 function MyDrive() {
@@ -15,6 +15,38 @@ function MyDrive() {
 
   const [files, setFiles] = useState([]);
   const [error, setError] = useState(null);
+
+  async function listFiles() {
+    try {
+      // Check if MetaMask is installed and connected
+      if (window.ethereum) {
+        await window.ethereum.enable();
+      } else {
+        throw new Error('MetaMask is not installed or not connected');
+      }
+
+      // Create a new ethers.js provider using the user's Ethereum provider
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+      // Create a new instance of the StoragePlatform contract
+      const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";// Replace with your contract address
+      const contract = new ethers.Contract(bdriveAddress, BDrive.abi, provider);
+
+      // Call the listFiles function on the smart contract to get the user's files
+      const [names, timestamps, images] = await contract.listFiles();
+
+      // Combine the file name, timestamp, and image data into an array of file objects
+      const files = names.map((name, i) => {
+        const timestamp = new Date(timestamps[i] * 1000);
+        return { name, timestamp, image: images[i] };
+      });
+
+      // Update the state with the list of files
+      setFiles(files);
+    } catch (error) {
+      setError(error.message);
+    }
+  }
 
   return (
     <div className='text-black'>
