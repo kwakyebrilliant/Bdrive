@@ -88,18 +88,24 @@ function MyDrive() {
 
             
                 <div className='w-full relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
-                  {files.slice(0, 4).map((file) => (
-                    <div key={file.name}>
-                      <iframe src={(file.cid)} alt={file.name}  className="relative border block overflow-hidden rounded-xl bg-cover bg-center bg-no-repeat"
-                      >
-                        </iframe>
-                    
-                    </div>
-                  ))
-
-                  }
-
-                </div>
+                {files
+                      .slice(0, 4)
+                      .map((file) => (
+                          <div key={file.name}>
+                              <iframe
+                                  src={file.cid}
+                                  alt={file.name}
+                                  className="relative border block overflow-hidden rounded-xl bg-cover bg-center bg-no-repeat"
+                              />
+                          </div>
+                      ))}
+                {files.length === 0 && 
+                <div className='flex justify-center'>
+                    <h3 className='text-xl font-bold'>
+                      No file found
+                      </h3>
+                  </div>}
+              </div>
 
 
                 {/* Files */}
@@ -110,35 +116,42 @@ function MyDrive() {
                 </div>
 
                 <div className='w-full relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
-                  {files.filter(file => file.name.match(new RegExp(search, "i"))).sort((a, b) => b.timestamp - a.timestamp).map((file) => (
-                    <div key={file.name}>
-                      <a href="#nothing" className="block">
-                      <iframe className="h-56 w-full rounded-bl-3xl rounded-tr-3xl border object-cover sm:h-64 lg:h-72" src={(file.cid)} alt={file.name} >
-                        </iframe>
-                        <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-
-                        <strong className="font-medium">
-                          {file.name}
-                        </strong>
-
-                        <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
-
-                        <p className="mt-0.5 opacity-50 sm:mt-0">
-                        {new Date(file.timestamp * 1000).toLocaleDateString()}
-                        </p>
-
-                        <span
-                        className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
-                      >
-                        <FaShare className='text-blue-500 cursor-pointer lg:w-4 lg:h-4'  onClick={() => setShowModal(true)} />
-
-                      
-                      </span>
-
-                        </div>
+                {files.length > 0 ? (
+                  files
+                    .filter((file) => file.name.match(new RegExp(search, 'i')))
+                    .sort((a, b) => b.timestamp - a.timestamp)
+                    .slice(0, 4)
+                    .map((file) => (
+                      <div key={file.name}>
+                        <a href='#nothing' className='block'>
+                          <iframe
+                            className='h-56 w-full rounded-bl-3xl rounded-tr-3xl border object-cover sm:h-64 lg:h-72'
+                            src={file.cid}
+                            alt={file.name}
+                          ></iframe>
+                          <div className='mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4'>
+                            <strong className='font-medium'>{file.name}</strong>
+                            <span className='hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500'></span>
+                            <p className='mt-0.5 opacity-50 sm:mt-0'>
+                              {new Date(file.timestamp * 1000).toLocaleDateString()}
+                            </p>
+                            <span className='inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white'>
+                              <FaShare
+                                className='text-blue-500 cursor-pointer lg:w-4 lg:h-4'
+                                onClick={() => setShowModal(true)}
+                              />
+                            </span>
+                          </div>
                         </a>
-                    </div>
-                  ))}
+                      </div>
+                    ))
+                ) : (
+                  <div className='flex justify-center'>
+                    <h3 className='text-xl font-bold'>
+                      No file found
+                      </h3>
+                  </div>
+                )}
                 </div>
 
                 
