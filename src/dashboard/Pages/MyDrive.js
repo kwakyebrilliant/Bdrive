@@ -110,7 +110,7 @@ function MyDrive() {
                 </div>
 
                 <div className='w-full relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
-                  {files.filter(file => file.name.match(new RegExp(search, "i"))).map((file) => (
+                  {files.filter(file => file.name.match(new RegExp(search, "i"))).sort((a, b) => b.timestamp - a.timestamp).map((file) => (
                     <div key={file.name}>
                       <a href="#nothing" className="block">
                       <iframe className="h-56 w-full rounded-bl-3xl rounded-tr-3xl border object-cover sm:h-64 lg:h-72" src={(file.cid)} alt={file.name} >
