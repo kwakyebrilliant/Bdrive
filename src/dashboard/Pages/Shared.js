@@ -1,51 +1,59 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import PartialNavbar from "../Partials/PartialNavbar";
 import Sidebar from '../Partials/Sidebar';
 
 import { FaShare } from 'react-icons/fa'
 
-import { ethers } from 'ethers';
+import { ethers } from "ethers";
 import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
-// const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
+const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
+const BDRIVE_ABI = BDrive.abi;
 
 
 function Shared() {
   const [showModal, setShowModal] = useState(false);
 
+  const [provider, setProvider] = useState(null);
+  const [contract, setContract] = useState(null);
+  const [account, setAccount] = useState(null);
   const [sharedFiles, setSharedFiles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isConnected, setIsConnected] = useState(false);
 
 
   useEffect(() => {
-    async function checkMetamask() {
-      if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const bdriveAddress = '0x7b06D17d015500968AA413611f763F5e10F17Df2'; // Replace with your contract address
-        const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
-        const files = await contract.listSharedFiles();
-        setSharedFiles(files);
-        setIsConnected(true);
-      } else {
-        setIsConnected(false);
-      }
-      setIsLoading(false);
+    async function init() {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(bdriveAddress, BDRIVE_ABI, signer);
+
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      setAccount(accounts[0]);
+
+      setProvider(provider);
+      setContract(contract);
     }
 
-    checkMetamask();
+    init();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    async function loadSharedFiles() {
+      if (contract && account) {
+        const [sharedFiles, timestamps, images] = await contract.listSharedFiles();
 
-  if (!isConnected) {
-    return <div>Please install and connect Metamask</div>;
-  }
+        const fileData = sharedFiles.map((name, i) => ({
+          name,
+          timestamp: timestamps[i],
+          image: images[i]
+        }));
 
+        setSharedFiles(fileData);
+      }
+    }
+
+    loadSharedFiles();
+  }, [contract, account]);
+  
   return (
     <div className='text-black'>
         <>
@@ -80,6 +88,17 @@ function Shared() {
                   Suggested
                 </p>
                 </div>
+
+                <div>
+      <h1>Bdrive Shared Files</h1>
+      {sharedFiles.map((file, i) => (
+        <div key={i}>
+          <h3>{file.name}</h3>
+          <p>Shared on {new Date(file.timestamp * 1000).toLocaleString()}</p>
+          <iframe src={file.image} style={{ width: '100%', height: '500px' }} />
+        </div>
+      ))}
+    </div>
 
                 {showModal ? (
                                 <>
@@ -307,19 +326,19 @@ function Shared() {
                 <div className='w-full'>
                 <div className='relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
 
-                <a href="#nothing" className="block">
+                <a href="#nothing" class="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong className="font-medium">Stands</strong>
+                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong class="font-medium">Stands</strong>
 
-                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
@@ -339,19 +358,19 @@ function Shared() {
                   </div>
                 </a>
 
-                <a href="#nothing" className="block">
+                <a href="#nothing" class="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong className="font-medium">Stands</strong>
+                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong class="font-medium">Stands</strong>
 
-                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
@@ -371,19 +390,19 @@ function Shared() {
                   </div>
                 </a>
 
-                <a href="#nothing" className="block">
+                <a href="#nothing" class="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong className="font-medium">Stands</strong>
+                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong class="font-medium">Stands</strong>
 
-                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
@@ -403,19 +422,19 @@ function Shared() {
                   </div>
                 </a>
 
-                <a href="#nothing" className="block">
+                <a href="#nothing" class="block">
                   <img
                     alt="Signage"
                     src="https://images.unsplash.com/photo-1588515724527-074a7a56616c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                    className="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
+                    class="h-56 w-full rounded-bl-3xl rounded-tr-3xl object-cover sm:h-64 lg:h-72"
                   />
 
-                  <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
-                    <strong className="font-medium">Stands</strong>
+                  <div class="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                    <strong class="font-medium">Stands</strong>
 
-                    <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
+                    <span class="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
-                    <p className="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
+                    <p class="mt-0.5 opacity-50 sm:mt-0">2 minutes ago</p>
                     <span
                         className="inline-flex items-center gap-0.5 rounded-full bg-black px-2 py-1 text-xs font-semibold text-white"
                       >
