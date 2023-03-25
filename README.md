@@ -19,7 +19,7 @@
 
 ## About The Project
 
-<img src="public/screenshot.jpeg" alt="screenshot" width="" >
+<img src="./assets/Screenshot 2023-03-24 at 13.43.30.png" alt="screenshot" width="" >
 
 # What it does
 Making use of blockchain technology, we present to you Movers, an property management platform that seeks simplify property management processes with blockchain. By doing so, we offer you an easy way to trade properties amongst users. And what we seek to achieve is to make the property management processes more transparent to end users.
