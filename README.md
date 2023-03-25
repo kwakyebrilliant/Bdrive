@@ -1,70 +1,155 @@
-# Getting Started with Create React App
+<div align="center">
+  <a href="https://bafybeia7f45reydcwe3nbat5fgylbpmkjrs34gnfdskqq54h2lac5akjwe.ipfs.w3s.link/80881.png">
+    <img width="200" src="public/house.ico" alt="logo">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">Movers</h3>
 
-## Available Scripts
+  <p align="center">
+    Properties Management platform with Blockchain!
+    <br />
+    <a href="https://github.com/kwakyebrilliant/Movers"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://moversv2.vercel.app/">View App</a>
+    
+  </p>
+</div>
 
-In the project directory, you can run:
+<!-- ABOUT THE PROJECT -->
 
-### `npm start`
+## About The Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src="public/screenshot.jpeg" alt="screenshot" width="" >
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# What it does
+Making use of blockchain technology, we present to you Movers, an property management platform that seeks simplify property management processes with blockchain. By doing so, we offer you an easy way to trade properties amongst users. And what we seek to achieve is to make the property management processes more transparent to end users.
 
-### `npm test`
+There are about four (4) user types (that is buyer, seller, lender and approver) that is captured on the platform. Among the four (4) user types, a user can perform an activity on the platform by choosing the user type they represent and then proceed to provide to make the exchange of a property a smooth sail. The user is also to ensure that metamask is installed in their browser. Below are steps a user can undertake to perform an activity on the platform:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The buyer can view a property and once interested can proceed to buy the property.
+- The seller can approve the sale of the property to enable the process, if not, the bid amount will be returned to the buyer. The seller after all other process will finally approve the sale to release the property to the buyer and then receive the bid amount.
+- The inspector will approve inspection once everything is in order for the next process.
+- The lender finally approve and lend the property for the seller to finally approve the property.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+All media are stored on IPFS.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Built With
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+- [React.js](https://reactjs.org/)
+- [React-Bootstrap](https://react-bootstrap.github.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Solidity](https://docs.soliditylang.org/en/v0.8.13/)
+- [IPFS](https://ipfs.io/)
 
-### `npm run eject`
+# Getting started
+The project consist of the backend and also the front end.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
+- nodejs installed
+- npm
+- Hardhat
+ ```
+npm install npm@latest -g
+npm install -g hardhat
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Local setup
+To run this project locally, follow these steps.
+1. Clone the project locally, change into the directory, and install the dependencies:
+```
+git clone https://github.com/kwakyebrilliant/Movers
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+cd Auditra2
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# install using NPM or Yarn
+npm install
 
-## Learn More
+# or
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+yarn
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Start the local Hardhat node
 
-### Code Splitting
+```sh
+npx hardhat node
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. With the network running, deploy the contracts to the local network in a separate terminal window
 
-### Analyzing the Bundle Size
+```sh
+npx hardhat run scripts/deploy.js --network localhost
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. Start the app
 
-### Making a Progressive Web App
+```
+npm run dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Configuration
 
-### Advanced Configuration
+The chain ID should be 80001. If you have a localhost rpc set up, you may need to overwrite it.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To deploy to Polygon test or main networks, update the configurations located in **hardhat.config.js** to use a private key and, optionally, deploy to a private RPC like Infura.
 
-### Deployment
+```javascript
+// require("@nomicfoundation/hardhat-toolbox");
+/* hardhat.config.js */
+require("@nomiclabs/hardhat-waffle");
+const fs = require("fs");
+// const privateKey = fs.readFileSync("secret.txt").toString();
+const projectId = "8b7ba5517c414450a93ec7334975a7fe";
+const privatekey1 =
+  "";
+const privatekey2 =
+  "";
+const privatekey3 =
+  "";
+const privatekey4 =
+  "";
+module.exports = {
+  defaultNetwork: "hardhat",
+  networks: {
+    hardhat: {
+      chainId: 1337,
+    },
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    mainet: {
+      url: `https://palm-mainnet.infura.io/v3/${projectId}`,
+      // accounts: [privateKey],
+    },
+    matic: {
+      url: "https://polygon-mumbai.g.alchemy.com/v2/2bGIFu-iEnl9RvAOTe1ddZI2gBnuYQGS",
+      accounts: [privatekey1, privatekey2, privatekey3, privatekey4],
+    },
+  },
+  solidity: {
+    version: "0.8.17",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
+};
+```
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+# License
+Distributed under the MIT License.
+
+# Contact
+- Brilliant Kwakye - https://twitter.com/a_moah__
+- Mends Albert - https://twitter.com/mendalbert
