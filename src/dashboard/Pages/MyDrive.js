@@ -322,7 +322,7 @@ function MyDrive() {
                         <span className="hidden sm:block sm:h-px sm:w-8 sm:bg-yellow-500"></span>
 
                         <p className="mt-0.5 opacity-50 sm:mt-0">
-                        {new Date(file.timestamp * 1000).toLocaleString()} ago
+                        {new Date(file.timestamp * 1000).toLocaleDateString()}
                         </p>
 
                         <span
