@@ -269,8 +269,6 @@ function MyDrive() {
                 {files.length > 0 ? (
                   files
                     .filter((file) => file.name.match(new RegExp(search, 'i')))
-                    .sort((a, b) => b.timestamp - a.timestamp)
-                    .slice(0, 4)
                     .map((file) => (
                       <div key={file.name}>
                         <a href='#nothing' className='block'>
