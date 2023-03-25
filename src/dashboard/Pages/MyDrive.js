@@ -9,8 +9,6 @@ import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
 // const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
 
-import { Web3Storage } from "web3.storage";
-
 
  
 function MyDrive() {
@@ -42,16 +40,16 @@ function MyDrive() {
     fetchData();
   }, []);
 
-  async function getImage(cid) {
-    const web3Storage = new Web3Storage({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDE0ZGU4NTUwMjAxMTdENDIyY0IxOTRBREJiZERlOTJGZjBkYzkxNzciLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzkzMTA5MjU2NDcsIm5hbWUiOiJCRHJpdmUifQ.hQVswoHltLw7O53wrarZP5lVW00dTI-lW6GmE4ozt6Q" });
-    const res = await web3Storage.get(cid);
-    if (res.status === 200) {
-      const blob = await res.blob();
-      return URL.createObjectURL(blob);
-    } else {
-      throw new Error("Failed to fetch image from web3.storage");
-    }
-  }
+  // async function getImage(cid) {
+  //   const web3Storage = new Web3Storage({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDE0ZGU4NTUwMjAxMTdENDIyY0IxOTRBREJiZERlOTJGZjBkYzkxNzciLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzkzMTA5MjU2NDcsIm5hbWUiOiJCRHJpdmUifQ.hQVswoHltLw7O53wrarZP5lVW00dTI-lW6GmE4ozt6Q" });
+  //   const res = await web3Storage.get(cid);
+  //   if (res.status === 200) {
+  //     const blob = await res.blob();
+  //     return URL.createObjectURL(blob);
+  //   } else {
+  //     throw new Error("Failed to fetch image from web3.storage");
+  //   }
+  // }
 
   return (
     <div className='text-black'>
@@ -94,7 +92,8 @@ function MyDrive() {
         <div key={file.name}>
           <h2>{file.name}</h2>
           <p>Timestamp: {new Date(file.timestamp * 1000).toLocaleString()}</p>
-          <img src={getImage(file.cid)} alt={file.name} />
+          <iframe src={(file.cid)} alt={file.name} >
+            </iframe>
         </div>
       ))}
     </div>
