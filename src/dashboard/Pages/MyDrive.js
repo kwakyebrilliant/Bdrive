@@ -19,6 +19,12 @@ function MyDrive() {
   const [files, setFiles] = useState([]);
   const [search, setSearch] = useState("");
 
+  const [fileIndex, setFileIndex] = useState("");
+  const [recipientAddress, setRecipientAddress] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isMetamaskInstalled, setIsMetamaskInstalled] = useState(false);
+  const [isMetamaskConnected, setIsMetamaskConnected] = useState(false);
+
   useEffect(() => {
     async function fetchData() {
       try {
