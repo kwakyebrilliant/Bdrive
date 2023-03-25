@@ -9,12 +9,14 @@ import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
 // const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
 
-import { create as ipfsHttpClient } from "ipfs-http-client";
+import { Web3Storage } from "web3.storage";
 
-const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
  
 function MyDrive() {
+
+
+
   const [showModal, setShowModal] = useState(false);
 
   const [files, setFiles] = useState([]);
@@ -26,20 +28,12 @@ function MyDrive() {
         const signer = provider.getSigner();
         const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
         const contract = new ethers.Contract(bdriveAddress, BDrive.abi, signer);
-        const [names, timestamps, cids] = await contract.listFiles();
+        const [names, timestamps, images] = await contract.listFiles();
         const files = names.map((name, index) => ({
           name,
           timestamp: timestamps[index].toNumber(),
-          cid: cids[index],
-          image: ""
+          cid: images[index]
         }));
-        setFiles(files);
-        await Promise.all(
-          files.map(async (file) => {
-            const data = await client.cat(file.cid);
-            file.image = data.toString("base64");
-          })
-        );
         setFiles(files);
       } catch (error) {
         console.log(error);
@@ -48,7 +42,16 @@ function MyDrive() {
     fetchData();
   }, []);
 
-
+  async function getImage(cid) {
+    const web3Storage = new Web3Storage({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDE0ZGU4NTUwMjAxMTdENDIyY0IxOTRBREJiZERlOTJGZjBkYzkxNzciLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzkzMTA5MjU2NDcsIm5hbWUiOiJCRHJpdmUifQ.hQVswoHltLw7O53wrarZP5lVW00dTI-lW6GmE4ozt6Q" });
+    const res = await web3Storage.get(cid);
+    if (res.status === 200) {
+      const blob = await res.blob();
+      return URL.createObjectURL(blob);
+    } else {
+      throw new Error("Failed to fetch image from web3.storage");
+    }
+  }
 
   return (
     <div className='text-black'>
@@ -85,13 +88,13 @@ function MyDrive() {
                 </p>
                 </div>
 
-                <div>
+      <div>
       <h1>List of Files</h1>
       {files.map((file) => (
         <div key={file.name}>
           <h2>{file.name}</h2>
           <p>Timestamp: {new Date(file.timestamp * 1000).toLocaleString()}</p>
-          <img src={`data:image/png;base64,${file.image}`} alt={file.name} />
+          <img src={getImage(file.cid)} alt={file.name} />
         </div>
       ))}
     </div>
