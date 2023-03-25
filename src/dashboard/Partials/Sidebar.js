@@ -13,8 +13,8 @@ const Sidebar = () => {
         { title: 'Summary', path: '/summary', src: <AiFillPieChart /> },
         { title: 'My Drive', path: '/mydrive', src: <AiFillUsb /> },
         { title: 'Shared', path: '/shared', src: <FaPeopleArrows /> },
-        { title: 'Recent', path: '/Recent', src: <FaClock /> },
-        { title: 'Favorite', path: '/favorite', src: <FaHeart /> },
+        // { title: 'Recent', path: '/Recent', src: <FaClock /> },
+        // { title: 'Favorite', path: '/favorite', src: <FaHeart /> },
     ]
 
     return (
