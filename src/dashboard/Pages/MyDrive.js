@@ -9,7 +9,6 @@ import BDrive from "../../artifacts/contracts/Bdrive.sol/Bdrive.json";
 
 // const bdriveAddress = "0x7b06D17d015500968AA413611f763F5e10F17Df2";
 
-
  
 function MyDrive() {
 
@@ -85,18 +84,6 @@ function MyDrive() {
                   Suggested
                 </p>
                 </div>
-
-      <div>
-      <h1>List of Files</h1>
-      {files.map((file) => (
-        <div key={file.name}>
-          <h2>{file.name}</h2>
-          <p>Timestamp: {new Date(file.timestamp * 1000).toLocaleString()}</p>
-          <iframe src={(file.cid)} alt={file.name} >
-            </iframe>
-        </div>
-      ))}
-    </div>
 
             
                 <div className='w-full'>
@@ -318,6 +305,25 @@ function MyDrive() {
                 <p className='text-md'>
                   Files
                 </p>
+                </div>
+
+                <div className='w-full'>
+                  {files.map((file) => (
+                    <div key={file.name} className='relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
+                      <a href="#nothing" className="block">
+                      <iframe className="h-56 w-full rounded-bl-3xl rounded-tr-3xl border object-cover sm:h-64 lg:h-72" src={(file.cid)} alt={file.name} >
+                        </iframe>
+                        <div className="mt-4 sm:flex sm:items-center sm:justify-center sm:gap-4">
+                          
+                        <strong className="font-medium">
+                          {file.name}
+                        </strong>
+
+                        </div>
+                      <p>Timestamp: {new Date(file.timestamp * 1000).toLocaleString()}</p>
+                        </a>
+                    </div>
+                  ))}
                 </div>
 
                 <div className='w-full'>
