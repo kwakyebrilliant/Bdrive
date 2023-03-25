@@ -276,7 +276,7 @@ function Summary() {
                         <div className="p-4 sm:p-6 lg:p-8">
                             <p className="text-lg font-bold">Files Uploaded</p>
 
-                            <p className="mt-1 font-mono text-xs">14 files</p>
+                            <p className="mt-1 font-mono text-xs">Upload files of all kind</p>
                         </div>
                     </a>
 
@@ -290,9 +290,9 @@ function Summary() {
                         ></span>
 
                         <div className="p-4 sm:p-6 lg:p-8">
-                            <p className="text-lg font-bold">Shared With Me</p>
+                            <p className="text-lg font-bold">Shared With Others</p>
 
-                            <p className="mt-1 font-mono text-xs">7 files</p>
+                            <p className="mt-1 font-mono text-xs">Those files you share with others</p>
                         </div>
                     </a>
 
@@ -306,9 +306,9 @@ function Summary() {
                         ></span>
 
                         <div className="p-4 sm:p-6 lg:p-8">
-                            <p className="text-lg font-bold">Favorite Uploads</p>
+                            <p className="text-lg font-bold">My Drive</p>
 
-                            <p className="mt-1 font-mono text-xs">3 Files</p>
+                            <p className="mt-1 font-mono text-xs">All your files</p>
                         </div>
                     </a>
 
