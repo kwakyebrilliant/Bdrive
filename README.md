@@ -1,12 +1,12 @@
 <div align="center">
   <a href="https://bafybeia7f45reydcwe3nbat5fgylbpmkjrs34gnfdskqq54h2lac5akjwe.ipfs.w3s.link/80881.png">
-    <img width="200" src="public/house.ico" alt="logo">
+    <img width="200" src="public/usb.ico" alt="logo">
   </a>
 
-  <h3 align="center">Movers</h3>
+  <h3 align="center">BDrive PolygonStore</h3>
 
   <p align="center">
-    Properties Management platform with Blockchain!
+    File storage platform with Blockchain!
     <br />
     <a href="https://github.com/kwakyebrilliant/Movers"><strong>Explore the docs »</strong></a>
     <br />
