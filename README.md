@@ -8,10 +8,9 @@
   <p align="center">
     File storage platform with Blockchain!
     <br />
-    <a href="https://github.com/kwakyebrilliant/Movers"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/kwakyebrilliant/Bdrive"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://moversv2.vercel.app/">View App</a>
     
   </p>
 </div>
