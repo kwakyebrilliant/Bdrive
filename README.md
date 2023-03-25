@@ -1,7 +1,5 @@
 <div align="center">
-  <a href="https://bafybeia7f45reydcwe3nbat5fgylbpmkjrs34gnfdskqq54h2lac5akjwe.ipfs.w3s.link/80881.png">
     <img width="200" src="public/usb.ico" alt="logo">
-  </a>
 
   <h3 align="center">BDrive PolygonStore</h3>
 
@@ -19,27 +17,22 @@
 
 ## About The Project
 
-<img src="./assets/Screenshot 2023-03-24 at 13.43.30.png" alt="screenshot" width="" >
+<img src="public/Screenshot.png" alt="screenshot" width="" >
 
 # What it does
-Making use of blockchain technology, we present to you Movers, an property management platform that seeks simplify property management processes with blockchain. By doing so, we offer you an easy way to trade properties amongst users. And what we seek to achieve is to make the property management processes more transparent to end users.
+Making use of blockchain technology, we present to you BDrive PolygonStore , a storage application that seeks to secure contents of users with blockchain. By doing so, we offer you an easy way to upload files, view them and also share with other users. And what we seek to achieve is to safeguard and protect contents of users with blockchain technology.
 
-There are about four (4) user types (that is buyer, seller, lender and approver) that is captured on the platform. Among the four (4) user types, a user can perform an activity on the platform by choosing the user type they represent and then proceed to provide to make the exchange of a property a smooth sail. The user is also to ensure that metamask is installed in their browser. Below are steps a user can undertake to perform an activity on the platform:
-
-- The buyer can view a property and once interested can proceed to buy the property.
-- The seller can approve the sale of the property to enable the process, if not, the bid amount will be returned to the buyer. The seller after all other process will finally approve the sale to release the property to the buyer and then receive the bid amount.
-- The inspector will approve inspection once everything is in order for the next process.
-- The lender finally approve and lend the property for the seller to finally approve the property.
-
-
+Once a user get on the platform, he or she will be able to perform an activity by clicking on the "Get Started" button. They will be prompted to connect their metamask wallet to the platform and if they do not have, they will be required to install the metamask extension.  At the summary page, the user then can click on the upload button and provide the details of the upload and proceed to upload their contents. There are pages like mydrive, shared with others and many more. All these pages are on the platform to make the platform complete. 
+Please note: add polygon matic to metamask testnet to be able to perform an activity on the platform.
 All media are stored on IPFS.
+
 
 
 # Built With
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 - [React.js](https://reactjs.org/)
 - [React-Bootstrap](https://react-bootstrap.github.io/)
-- [Bootstrap](https://getbootstrap.com/)
+- [TailwindCSS](https://tailwindcss.com/docs/guides/create-react-app)
 - [Solidity](https://docs.soliditylang.org/en/v0.8.13/)
 - [IPFS](https://ipfs.io/)
 
@@ -61,7 +54,7 @@ To run this project locally, follow these steps.
 ```
 git clone https://github.com/kwakyebrilliant/Movers
 
-cd Auditra2
+cd BDrive
 
 # install using NPM or Yarn
 npm install
