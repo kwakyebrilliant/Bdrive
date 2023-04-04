@@ -4,7 +4,7 @@
   <h3 align="center">BDrive PolygonStore</h3>
 
   <p align="center">
-    File storage platform with Blockchain!
+    File storage platform with Blockchain!!!
     <br />
     <a href="https://github.com/kwakyebrilliant/Bdrive"><strong>Explore the docs »</strong></a>
     <br />
@@ -52,7 +52,7 @@ npm install -g hardhat
 To run this project locally, follow these steps.
 1. Clone the project locally, change into the directory, and install the dependencies:
 ```
-git clone https://github.com/kwakyebrilliant/Movers
+git clone https://github.com/kwakyebrilliant/Bdrive
 
 cd BDrive
 
