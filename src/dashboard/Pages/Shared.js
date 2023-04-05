@@ -81,7 +81,6 @@ function Shared() {
                     </div>
                 </form>
 
-
                 {/* Shared with me */}
                 <div className='mt-10'>
                 <p className='text-md'>
