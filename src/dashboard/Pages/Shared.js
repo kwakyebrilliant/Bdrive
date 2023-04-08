@@ -86,7 +86,7 @@ function Shared() {
                 <p className='text-md'>
                   Shared with others
                 </p>
-                </div>
+                </div> 
    
                 <div className='w-full relative mt-3 grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-16'>
                 {sharedFiles.length > 0 ? (
