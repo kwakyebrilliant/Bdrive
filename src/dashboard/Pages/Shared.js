@@ -107,7 +107,7 @@ function Shared() {
                             </p>
                           </div>
                         </a>
-                      </div>
+                      </div> 
                     ))
                 ) : (
                   <div className='flex justify-center'>
@@ -117,10 +117,10 @@ function Shared() {
                   </div>
                 )}
                 </div>
-
+ 
                 </div>
     
-     
+      
             </div>
  
         </div>
